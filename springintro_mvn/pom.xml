@@ -1,0 +1,101 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.apress.springrecipes</groupId>
+    <artifactId>springintro</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <name>Introduction to Spring</name>
+    <developers>
+        <developer>
+            <id>jlong</id>
+            <name>Josh Long</name>
+            <email>josh@joshlong.com</email>
+            <roles>
+                <role>Author</role>
+            </roles>
+            <organization>http://www.joshlong.com</organization>
+            <organizationUrl>http://www.joshlong.com</organizationUrl>
+        </developer>
+        <developer>
+            <id>drubio</id>
+            <name>Daniel Rubio</name>
+            <roles>
+                <role>Author</role>
+            </roles>
+            <organization>Web Forefront</organization>
+            <organizationUrl>http://www.webforefront.com</organizationUrl>
+        </developer>
+        <developer>
+            <id>gmak</id>
+            <name>Gary Mak</name>
+            <email>springrecipes@metarchit.com</email>
+            <roles>
+                <role>Author</role>
+            </roles>
+            <organization>Meta-Archit</organization>
+            <organizationUrl>http://www.metaarchit.com</organizationUrl>
+        </developer>
+    </developers>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>commons-lang</groupId>
+                <artifactId>commons-lang</artifactId>
+                <version>2.2</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>1.3</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+    <dependencies>
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+        </dependency>
+    </dependencies>
+    <build>
+        <defaultGoal>install</defaultGoal>
+	<pluginManagement>
+	<plugins>
+		<plugin>
+			<groupId>org.eclipse.m2e</groupId>
+				<artifactId>lifecycle-mapping</artifactId>
+				<version>1.0.0</version>
+				<configuration>
+					<lifecycleMappingMetadata>
+						<pluginExecutions>
+							<pluginExecution>
+								<pluginExecutionFilter>
+									<groupId>org.apache.maven.plugins</groupId>
+									<artifactId>maven-dependency-plugin</artifactId>
+									<versionRange>[1.0.0,)</versionRange>
+									<goals>
+										<goal>copy-dependencies</goal>
+									</goals>
+								</pluginExecutionFilter>
+								<action>
+									<ignore />
+								</action>
+							</pluginExecution>
+						</pluginExecutions>
+					</lifecycleMappingMetadata>
+				</configuration>
+			</plugin>
+			<plugin>
+			  <groupId>org.apache.maven.plugins</groupId>
+			  <artifactId>maven-resources-plugin</artifactId>
+			  <version>2.4</version>
+			  <executions>
+			  </executions>
+			</plugin>
+		</plugins>
+	</pluginManagement>
+    </build>
+</project>
