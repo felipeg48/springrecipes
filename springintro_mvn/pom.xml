@@ -54,6 +54,11 @@
             <dependency>
                 <version>${spring.version}</version>
                 <groupId>org.springframework</groupId>
+                <artifactId>spring-context</artifactId>
+            </dependency>
+            <dependency>
+                <version>${spring.version}</version>
+                <groupId>org.springframework</groupId>
                 <artifactId>spring-context-support</artifactId>
             </dependency>
         </dependencies>
@@ -113,7 +118,42 @@
 			  <executions>
 			  </executions>
 			</plugin>
+			<plugin>
+			  <groupId>org.apache.maven.plugins</groupId>
+			  <artifactId>maven-dependency-plugin</artifactId>
+			  <executions>
+			    <execution>
+			      <id>copy-dependencies</id>
+			      <phase>prepare-package</phase>
+			      <goals>
+				<goal>copy-dependencies</goal>
+			      </goals>
+			      <configuration>
+				<outputDirectory>${project.build.directory}/lib</outputDirectory>
+			      </configuration>
+			    </execution>
+			  </executions>
+			</plugin>
+			<plugin>
+			  <groupId>org.apache.maven.plugins</groupId>
+			  <artifactId>maven-jar-plugin</artifactId>
+			  <configuration>
+			    <archive>
+			      <manifest>
+				<addClasspath>true</addClasspath>
+				<classpathPrefix>lib/</classpathPrefix>
+				<mainClass>com.apress.springrecipes.hello.Main</mainClass>
+			      </manifest>
+			    </archive>
+			  </configuration>
+			</plugin>
 		</plugins>
 	</pluginManagement>
+        <plugins> 
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+            </plugin>
+        </plugins>
     </build>
 </project>
