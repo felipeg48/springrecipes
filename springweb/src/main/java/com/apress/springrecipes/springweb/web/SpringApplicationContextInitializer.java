@@ -1,6 +1,5 @@
 package com.apress.springrecipes.springweb.web;
 
-import org.cloudfoundry.runtime.env.CloudEnvironment;
 import org.springframework.context.ApplicationContextInitializer;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import com.apress.springrecipes.springweb.services.config.ServicesConfiguration;
@@ -10,12 +9,7 @@ public class SpringApplicationContextInitializer implements ApplicationContextIn
     @Override
     public void initialize(AnnotationConfigWebApplicationContext applicationContext) {
 
-        CloudEnvironment cloudEnvironment = new CloudEnvironment();
-        if (cloudEnvironment.isCloudFoundry()) {
-            applicationContext.getEnvironment().setActiveProfiles("cloud");
-        } else {
-            applicationContext.getEnvironment().setActiveProfiles("local");
-        }
+	applicationContext.getEnvironment().setActiveProfiles("local");
 
         Class<?>[] configs = {ServicesConfiguration.class, WebMvcConfiguration.class};
 

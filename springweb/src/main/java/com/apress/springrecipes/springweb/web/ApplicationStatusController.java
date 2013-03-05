@@ -1,6 +1,5 @@
 package com.apress.springrecipes.springweb.web;
 
-import org.cloudfoundry.runtime.env.CloudEnvironment;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,9 +37,4 @@ public class ApplicationStatusController {
         return new Context(httpServletRequest.getContextPath());
     }
 
-    @ResponseBody
-    @RequestMapping(value = "/status", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public CloudEnvironment showCloudEnvironment() {
-        return new CloudEnvironment();
-    }
 }
