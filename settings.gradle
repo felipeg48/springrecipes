@@ -1,4 +1,6 @@
 //rootProject.name = 'springintro'
 include 'springintro'
+include 'springsequence'
+include 'springsequence_annotations'
 include 'springweb'
 include 'springweb_withredis'
