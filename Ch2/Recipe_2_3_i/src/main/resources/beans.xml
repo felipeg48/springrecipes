@@ -4,7 +4,15 @@
     xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
 
+    <bean id="datePrefixGenerator"
+    class="com.apress.springrecipes.sequence.DatePrefixGenerator">
+    <property name="pattern" value="yyyyMMdd" />
+    </bean>
+
     <bean id="sequenceGenerator"
         class="com.apress.springrecipes.sequence.SequenceGenerator"
-        p:prefix="30" p:suffix="A" p:initial="100000" />
+        p:suffix="A" p:initial="1000000"
+        p:prefixGenerator-ref="datePrefixGenerator" />
+
 </beans>
+

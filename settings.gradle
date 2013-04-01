@@ -1,5 +1,5 @@
 //rootProject.name = 'springintro'
-include 'Ch2:Recipe_2_1'
+include 'Ch2:Recipe_2_1','Ch2:Recipe_2_2_i','Ch2:Recipe_2_2_ii','Ch2:Recipe_2_2_iii','Ch2:Recipe_2_3_i','Ch2:Recipe_2_3_ii','Ch2:Recipe_2_3_iii'
 include 'springintro'
 include 'springsequence'
 include 'springsequence_annotations'
