@@ -1,4 +1,5 @@
 //rootProject.name = 'springintro'
+include 'Ch2:Recipe_2_1'
 include 'springintro'
 include 'springsequence'
 include 'springsequence_annotations'

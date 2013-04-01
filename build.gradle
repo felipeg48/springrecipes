@@ -87,64 +87,6 @@ project(':springintro') {
 } // End springintro project 
 
 
-// Define springsequence project
-project(':springsequence') {   
-  // Define defaultTasks, first clean then build for springintro
-  defaultTasks 'clean', 'build'
-  // Define dependencies
-  dependencies {
-    compile group: 'org.springframework', name: 'spring-core', version:'3.2.0.RELEASE'
-    compile group: 'org.springframework', name: 'spring-expression', version:'3.2.0.RELEASE'
-    compile group: 'org.springframework', name: 'spring-beans', version:'3.2.0.RELEASE'
-    compile group: 'org.springframework', name: 'spring-context', version:'3.2.0.RELEASE'
-    compile group: 'commons-logging', name: 'commons-logging', version:'1.1.1'
-   }
-   // Define how to build final JAR for project
-   jar {
-     //The following creates a fat-JAR with all dependencies embedded 
-     // from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
-     //Instead use custom task to copy files to lib directory and create a custom manfiest
-     dependsOn copyDependenciesToLibDir
-     manifest.attributes("Main-Class": "com.apress.springrecipes.sequence.Main")
-     project.ext["CP"] = new StringBuffer()
-     configurations.runtime.allDependencies.each { dep ->
-       project.ext["CP"].append(' ')
-       project.ext["CP"].append("lib/${dep.getName()}-${dep.getVersion()}.jar")
-     }
-     project.ext["CP"].delete(0,1)
-     manifest.attributes("Class-Path": project.ext["CP"].toString())
-   }
-} // End springsequence project 
-
-// Define springsequence_annotations project
-project(':springsequence_annotations') {   
-  // Define defaultTasks, first clean then build for springintro
-  defaultTasks 'clean', 'build'
-  // Define dependencies
-  dependencies {
-    compile group: 'org.springframework', name: 'spring-core', version:'3.2.0.RELEASE'
-    compile group: 'org.springframework', name: 'spring-expression', version:'3.2.0.RELEASE'
-    compile group: 'org.springframework', name: 'spring-beans', version:'3.2.0.RELEASE'
-    compile group: 'org.springframework', name: 'spring-context', version:'3.2.0.RELEASE'
-    compile group: 'commons-logging', name: 'commons-logging', version:'1.1.1'
-   }
-   // Define how to build final JAR for project
-   jar {
-     //The following creates a fat-JAR with all dependencies embedded 
-     // from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
-     //Instead use custom task to copy files to lib directory and create a custom manfiest
-     dependsOn copyDependenciesToLibDir
-     manifest.attributes("Main-Class": "com.apress.springrecipes.sequence.Main")
-     project.ext["CP"] = new StringBuffer()
-     configurations.runtime.allDependencies.each { dep ->
-       project.ext["CP"].append(' ')
-       project.ext["CP"].append("lib/${dep.getName()}-${dep.getVersion()}.jar")
-     }
-     project.ext["CP"].delete(0,1)
-     manifest.attributes("Class-Path": project.ext["CP"].toString())
-   }
-} // End springsequence_annotations project 
-
 // Define springweb project
 project(':springweb') {
    // Define usage of war plugin
