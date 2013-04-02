@@ -1,7 +1,5 @@
 //rootProject.name = 'springintro'
-include 'Ch2:Recipe_2_1','Ch2:Recipe_2_2_i','Ch2:Recipe_2_2_ii','Ch2:Recipe_2_2_iii','Ch2:Recipe_2_3_i','Ch2:Recipe_2_3_ii','Ch2:Recipe_2_3_iii'
+include 'Ch2:Recipe_2_1','Ch2:Recipe_2_2_i','Ch2:Recipe_2_2_ii','Ch2:Recipe_2_2_iii','Ch2:Recipe_2_3_i','Ch2:Recipe_2_3_ii','Ch2:Recipe_2_3_iii','Ch2:Recipe_2_4_i','Ch2:Recipe_2_4_ii','Ch2:Recipe_2_4_iii','Ch2:Recipe_2_4_iv','Ch2:Recipe_2_4_v','Ch2:Recipe_2_4_vi','Ch2:Recipe_2_4_vii','Ch2:Recipe_2_5_i','Ch2:Recipe_2_5_ii','Ch2:Recipe_2_6_i','Ch2:Recipe_2_6_ii','Ch2:Recipe_2_7_i','Ch2:Recipe_2_7_ii'
 include 'springintro'
-include 'springsequence'
-include 'springsequence_annotations'
 include 'springweb'
 include 'springweb_withredis'
