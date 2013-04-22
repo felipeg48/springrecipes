@@ -18,9 +18,4 @@
     </property>
 </bean>
 
-<!-- 
-    <bean id="sequenceGenerator"
-        class="com.apress.springrecipes.sequence.SequenceGenerator"
-        p:prefix="30" p:suffix="A" p:initial="100000" />
--->
 </beans>
