@@ -10,13 +10,22 @@ public class Main {
         ApplicationContext context =
             new GenericXmlApplicationContext("beans.xml");
 
-        Product bestSeller = (Product) context.getBean("bestSeller");
-        System.out.println("Best seller is: " + bestSeller);
 
-        ProductRanking productRanking =
-            (ProductRanking) context.getBean("productRanking");
-        System.out.println("Product ranking from " + productRanking.getFromDate() + " to " + productRanking.getToDate());
+        Product aaa = (Product) context.getBean("aaa");
+        Product cdrw = (Product) context.getBean("cdrw");
+        Product dvdrw = (Product) context.getBean("dvdrw");
 
+        ShoppingCart cart1 = (ShoppingCart) context.getBean("shoppingCart");
+        cart1.addItem(aaa);
+        cart1.addItem(cdrw);
+        System.out.println("Shopping cart 1 contains " + cart1.getItems());
 
+        ShoppingCart cart2 = (ShoppingCart) context.getBean("shoppingCart");
+        cart2.addItem(dvdrw);
+        System.out.println("Shopping cart 2 contains " + cart2.getItems());
+
+	Cashier cashier = (Cashier) context.getBean("cashier");
+	cashier.checkout(cart1);
+	cashier.checkout(cart2);
     }
 }

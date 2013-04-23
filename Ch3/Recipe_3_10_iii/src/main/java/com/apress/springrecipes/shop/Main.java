@@ -8,7 +8,7 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
         ApplicationContext context =
-            new GenericXmlApplicationContext("beans.xml");
+            new GenericXmlApplicationContext("appContext.xml");
 
 
         Product aaa = (Product) context.getBean("aaa");
@@ -24,8 +24,5 @@ public class Main {
         cart2.addItem(dvdrw);
         System.out.println("Shopping cart 2 contains " + cart2.getItems());
 
-	Cashier cashier = (Cashier) context.getBean("cashier");
-	cashier.checkout(cart1);
-	cashier.checkout(cart2);
     }
 }

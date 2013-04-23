@@ -1,15 +1,21 @@
 package com.apress.springrecipes.shop;
 
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.GenericXmlApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import com.apress.springrecipes.shop.config.ShopConfigurationGlobal;
+import com.apress.springrecipes.shop.config.ShopConfigurationSpr;
+import com.apress.springrecipes.shop.config.ShopConfigurationSumWin;
+import com.apress.springrecipes.shop.config.ShopConfigurationAut;
 
 
 public class Main {
 
     public static void main(String[] args) throws Exception {
-        ApplicationContext context =
-            new GenericXmlApplicationContext("beans.xml");
+	AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
+	context.getEnvironment().setActiveProfiles("global","winter");
+	context.register(ShopConfigurationGlobal.class, ShopConfigurationSpr.class, ShopConfigurationSumWin.class, ShopConfigurationAut.class);
+	context.scan("com.apress.springrecipes.shop"); 
 
+	context.refresh();
 
         Product aaa = (Product) context.getBean("aaa");
         Product cdrw = (Product) context.getBean("cdrw");

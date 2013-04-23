@@ -1,35 +1,29 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:util="http://www.springframework.org/schema/util"
     xsi:schemaLocation="http://www.springframework.org/schema/beans
-        http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
-        http://www.springframework.org/schema/util
-        http://www.springframework.org/schema/util/spring-util-3.2.xsd">
-
-    <bean id="dateFormat" class="java.text.SimpleDateFormat">
-        <constructor-arg value="yyyy-MM-dd" />
+        http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+    
+    <bean id="aaa" class="com.apress.springrecipes.shop.Battery">
+        <property name="name" value="AAA" />
+        <property name="price" value="2.5" />
+        <property name="rechargeable" value="true" />
     </bean>
 
-
-   <bean id="productRanking"
-        class="com.apress.springrecipes.shop.ProductRanking">
-        <property name="bestSeller">
-            <bean class="com.apress.springrecipes.shop.Disc">
-                <property name="name" value="CD-RW" />
-                <property name="price" value="1.5" />
-            </bean>
-        </property>
-        <property name="fromDate">
-            <bean factory-bean="dateFormat" factory-method="parse">
-                <constructor-arg value="2013-09-01" />
-            </bean>
-        </property>
-        <property name="toDate">
-            <bean factory-bean="dateFormat" factory-method="parse">
-                <constructor-arg value="2013-09-30" />
-            </bean>
-        </property>
+    <bean id="cdrw" class="com.apress.springrecipes.shop.Disc">
+        <property name="name" value="CD-RW" />
+        <property name="price" value="1.5" />
+        <property name="capacity" value="700" />
     </bean>
 
-    <util:property-path id="bestSeller" path="productRanking.bestSeller" />
+   <bean id="dvdrw" class="com.apress.springrecipes.shop.Disc">
+        <property name="name" value="DVD-RW" />
+        <property name="price" value="3.0" />
+        <property name="capacity" value="700" />
+    </bean>
+
+    <bean id="shoppingCart" class="com.apress.springrecipes.shop.ShoppingCart" scope="prototype" />
+
+    <bean id="cashier" class="com.apress.springrecipes.shop.Cashier"/>
+
+    <bean class="com.apress.springrecipes.shop.CheckoutListener"/>
 </beans>
