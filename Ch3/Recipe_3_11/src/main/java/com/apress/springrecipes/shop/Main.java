@@ -12,7 +12,7 @@ public class Main {
     public static void main(String[] args) throws Exception {
 	AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
 	context.getEnvironment().setActiveProfiles("global","winter");
-	context.register(ShopConfigurationGlobal.class, ShopConfigurationSpr.class, ShopConfigurationSumWin.class, ShopConfigurationAut.class);
+	//context.register(ShopConfigurationGlobal.class, ShopConfigurationSpr.class, ShopConfigurationSumWin.class, ShopConfigurationAut.class);
 	context.scan("com.apress.springrecipes.shop"); 
 
 	context.refresh();
