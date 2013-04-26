@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 
 public class SequenceGenerator {
     @Autowired
-    @Qualifier("datePrefixGenerator")
     private PrefixGenerator prefixGenerator;
     private String suffix;
     private int initial;

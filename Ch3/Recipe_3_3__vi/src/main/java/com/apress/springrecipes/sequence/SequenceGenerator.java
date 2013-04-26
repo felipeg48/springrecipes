@@ -1,6 +1,10 @@
 package com.apress.springrecipes.sequence;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 public class SequenceGenerator {
+    @Autowired
+    @Qualifier("datePrefixGenerator")
     private PrefixGenerator prefixGenerator;
     private String suffix;
     private int initial;
@@ -24,7 +28,7 @@ public class SequenceGenerator {
     }
     public synchronized String getSequence() {
         StringBuffer buffer = new StringBuffer();
-        buffer.append(prefixGenerator.getPrefix());
+	buffer.append(prefixGenerator.getPrefix());
         buffer.append(initial + counter++);
         buffer.append(suffix);
         return buffer.toString();

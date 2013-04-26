@@ -5,17 +5,14 @@
 
   <bean id="sequenceGenerator"
         class="com.apress.springrecipes.sequence.SequenceGenerator"
-        autowire="byType">
+        autowire="byName">
         <property name="initial" value="100000" />
         <property name="suffix" value="A" />
   </bean>
   
-  <bean id="datePrefixGenerator" primary="true"
+  <bean id="prefixGenerator"
         class="com.apress.springrecipes.sequence.DatePrefixGenerator">
-  </bean>
-
-  <bean id="numberprefixGenerator"
-        class="com.apress.springrecipes.sequence.NumberPrefixGenerator">
+    <property name="pattern" value="yyyyMMdd" />
   </bean>
 
 </beans>
