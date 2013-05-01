@@ -12,23 +12,11 @@
   </bean>
 
   <lang:bsh id="interestCalculator"
-    script-interfaces="com.apress.springrecipes.interest.InterestCalculator">
-    <lang:inline-script>
-    <![CDATA[
-    import com.apress.springrecipes.interest.RateCalculator;
-
-    RateCalculator rateCalculator;
-
-    void setRateCalculator(RateCalculator aRateCalculator) {
-        rateCalculator = aRateCalculator;
-    }
-
-    double calculate(double amount, double year) {
-        return amount * year * rateCalculator.getAnnualRate();
-    }
-    ]]>
-    </lang:inline-script>
+	    script-source="classpath:com/apress/springrecipes/interest/SimpleInterestCalculator.bsh"
+	    script-interfaces="com.apress.springrecipes.interest.InterestCalculator"
+	    refresh-check-delay="5000">
     <lang:property name="rateCalculator" ref="rateCalculator" />
   </lang:bsh>
+
 
 </beans>

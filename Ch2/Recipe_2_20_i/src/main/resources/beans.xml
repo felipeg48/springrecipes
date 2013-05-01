@@ -11,25 +11,11 @@
     <property name="rate" value="0.05" />
   </bean>
 
-<lang:jruby id="interestCalculator"
-    script-interfaces="com.apress.springrecipes.interest.InterestCalculator">
-    <lang:inline-script>
-    <![CDATA[
-    class SimpleInterestCalculator
-
-        def setRateCalculator(rateCalculator)
-            @rateCalculator = rateCalculator
-        end
-
-        def calculate(amount, year)
-            amount * year * @rateCalculator.getAnnualRate
-        end
-    end
-
-    SimpleInterestCalculator.new
-    ]]>
-    </lang:inline-script>
+  <lang:jruby id="interestCalculator"
+	      script-source="classpath:com/apress/springrecipes/interest/SimpleInterestCalculator.rb"
+	      script-interfaces="com.apress.springrecipes.interest.InterestCalculator"
+	      refresh-check-delay="5000">
     <lang:property name="rateCalculator" ref="rateCalculator" />
-</lang:jruby>
+  </lang:jruby>
 
 </beans>

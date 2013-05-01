@@ -11,24 +11,11 @@
     <property name="rate" value="0.05" />
   </bean>
 
-<lang:groovy id="interestCalculator">
-    <lang:inline-script>
-    <![CDATA[
-    import com.apress.springrecipes.interest.InterestCalculator;
-    import com.apress.springrecipes.interest.RateCalculator;
-
-    class SimpleInterestCalculator implements InterestCalculator {
-
-        RateCalculator rateCalculator
-
-        double calculate(double amount, double year) {
-            return amount * year * rateCalculator.getAnnualRate()
-        }
-    }
-    ]]>
-    </lang:inline-script>
+  <lang:groovy id="interestCalculator"
+	       script-source="classpath:com/apress/springrecipes/interest/SimpleInterestCalculator.groovy"
+	       refresh-check-delay="5000">
     <lang:property name="rateCalculator" ref="rateCalculator" />
-</lang:groovy>
+  </lang:groovy>
 
 
 </beans>

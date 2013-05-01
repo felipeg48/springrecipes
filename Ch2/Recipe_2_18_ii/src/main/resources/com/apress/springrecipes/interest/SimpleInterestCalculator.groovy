@@ -1,11 +1,10 @@
 import com.apress.springrecipes.interest.InterestCalculator;
-import com.apress.springrecipes.interest.RateCalculator;
 
 class SimpleInterestCalculator implements InterestCalculator {
 
-    RateCalculator rateCalculator
+    double rate
 
     double calculate(double amount, double year) {
-        return amount * year * rateCalculator.getAnnualRate()
+        return amount * year * rate
     }
 }

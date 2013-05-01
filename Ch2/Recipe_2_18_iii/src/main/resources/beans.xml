@@ -6,16 +6,10 @@
         http://www.springframework.org/schema/lang
         http://www.springframework.org/schema/lang/spring-lang-3.2.xsd">
 
-  <bean id="rateCalculator"
-	class="com.apress.springrecipes.interest.FixedRateCalculator">
-    <property name="rate" value="0.05" />
-  </bean>
-
   <lang:bsh id="interestCalculator"
 	    script-source="classpath:com/apress/springrecipes/interest/SimpleInterestCalculator.bsh"
 	    script-interfaces="com.apress.springrecipes.interest.InterestCalculator">
-    <lang:property name="rateCalculator" ref="rateCalculator" />
-  </lang:bsh>
-
+    <lang:property name="rate" value="0.05" />
+</lang:bsh>
 
 </beans>

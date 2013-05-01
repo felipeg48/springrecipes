@@ -887,3 +887,175 @@ project(':Ch3:Recipe_3_11') {
      manifest.attributes("Class-Path": project.ext["CP"].toString())
    }
 } // End 3_11 project 
+
+
+// Define 3_12_i project
+project(':Ch3:Recipe_3_12_i') {   
+  // Define defaultTasks, first clean then build for springintro
+  defaultTasks 'clean', 'build'
+  // Define dependencies
+  dependencies {
+    compile group: 'org.springframework', name: 'spring-core', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-expression', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-beans', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-context', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-aop', version:'3.2.0.RELEASE'
+    compile group: 'commons-logging', name: 'commons-logging', version:'1.1.1'
+    compile group: 'org.aspectj', name: 'aspectjtools',version:'1.6.2'
+    compile group: 'aopalliance', name: 'aopalliance', version:'1.0'           
+    compile group: 'log4j', name: 'log4j', version:'1.2.14'
+            
+   }
+   // Define how to build final JAR for project
+   jar {
+     //The following creates a fat-JAR with all dependencies embedded 
+     // from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+     //Instead use custom task to copy files to lib directory and create a custom manfiest
+     dependsOn copyDependenciesToLibDir
+     manifest.attributes("Main-Class": "com.apress.springrecipes.calculator.Main")
+     project.ext["CP"] = new StringBuffer()
+     configurations.runtime.allDependencies.each { dep ->
+       project.ext["CP"].append(' ')
+       project.ext["CP"].append("lib/${dep.getName()}-${dep.getVersion()}.jar")
+     }
+     project.ext["CP"].delete(0,1)
+     manifest.attributes("Class-Path": project.ext["CP"].toString())
+   }
+} // End 3_12_i project 
+
+// Define 3_12_ii project
+project(':Ch3:Recipe_3_12_ii') {   
+  // Define defaultTasks, first clean then build for springintro
+  defaultTasks 'clean', 'build'
+  // Define dependencies
+  dependencies {
+    compile group: 'org.springframework', name: 'spring-core', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-expression', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-beans', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-context', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-aop', version:'3.2.0.RELEASE'
+    compile group: 'commons-logging', name: 'commons-logging', version:'1.1.1'
+    compile group: 'org.aspectj', name: 'aspectjtools',version:'1.6.2'
+    compile group: 'aopalliance', name: 'aopalliance', version:'1.0'           
+    compile group: 'log4j', name: 'log4j', version:'1.2.14'
+            
+   }
+   // Define how to build final JAR for project
+   jar {
+     //The following creates a fat-JAR with all dependencies embedded 
+     // from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+     //Instead use custom task to copy files to lib directory and create a custom manfiest
+     dependsOn copyDependenciesToLibDir
+     manifest.attributes("Main-Class": "com.apress.springrecipes.calculator.Main")
+     project.ext["CP"] = new StringBuffer()
+     configurations.runtime.allDependencies.each { dep ->
+       project.ext["CP"].append(' ')
+       project.ext["CP"].append("lib/${dep.getName()}-${dep.getVersion()}.jar")
+     }
+     project.ext["CP"].delete(0,1)
+     manifest.attributes("Class-Path": project.ext["CP"].toString())
+   }
+} // End 3_12_ii project 
+
+// Define 3_12_iii project
+project(':Ch3:Recipe_3_12_iii') {   
+  // Define defaultTasks, first clean then build for springintro
+  defaultTasks 'clean', 'build'
+  // Define dependencies
+  dependencies {
+    compile group: 'org.springframework', name: 'spring-core', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-expression', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-beans', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-context', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-aop', version:'3.2.0.RELEASE'
+    compile group: 'commons-logging', name: 'commons-logging', version:'1.1.1'
+    compile group: 'org.aspectj', name: 'aspectjtools',version:'1.6.2'
+    compile group: 'aopalliance', name: 'aopalliance', version:'1.0'           
+    compile group: 'log4j', name: 'log4j', version:'1.2.14'
+            
+   }
+   // Define how to build final JAR for project
+   jar {
+     //The following creates a fat-JAR with all dependencies embedded 
+     // from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+     //Instead use custom task to copy files to lib directory and create a custom manfiest
+     dependsOn copyDependenciesToLibDir
+     manifest.attributes("Main-Class": "com.apress.springrecipes.calculator.Main")
+     project.ext["CP"] = new StringBuffer()
+     configurations.runtime.allDependencies.each { dep ->
+       project.ext["CP"].append(' ')
+       project.ext["CP"].append("lib/${dep.getName()}-${dep.getVersion()}.jar")
+     }
+     project.ext["CP"].delete(0,1)
+     manifest.attributes("Class-Path": project.ext["CP"].toString())
+   }
+} // End 3_12_iii project 
+
+// Define 3_12_iv project
+project(':Ch3:Recipe_3_12_iv') {   
+  // Define defaultTasks, first clean then build for springintro
+  defaultTasks 'clean', 'build'
+  // Define dependencies
+  dependencies {
+    compile group: 'org.springframework', name: 'spring-core', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-expression', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-beans', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-context', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-aop', version:'3.2.0.RELEASE'
+    compile group: 'commons-logging', name: 'commons-logging', version:'1.1.1'
+    compile group: 'org.aspectj', name: 'aspectjtools',version:'1.6.2'
+    compile group: 'aopalliance', name: 'aopalliance', version:'1.0'           
+    compile group: 'log4j', name: 'log4j', version:'1.2.14'
+            
+   }
+   // Define how to build final JAR for project
+   jar {
+     //The following creates a fat-JAR with all dependencies embedded 
+     // from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+     //Instead use custom task to copy files to lib directory and create a custom manfiest
+     dependsOn copyDependenciesToLibDir
+     manifest.attributes("Main-Class": "com.apress.springrecipes.calculator.Main")
+     project.ext["CP"] = new StringBuffer()
+     configurations.runtime.allDependencies.each { dep ->
+       project.ext["CP"].append(' ')
+       project.ext["CP"].append("lib/${dep.getName()}-${dep.getVersion()}.jar")
+     }
+     project.ext["CP"].delete(0,1)
+     manifest.attributes("Class-Path": project.ext["CP"].toString())
+   }
+} // End 3_12_iv project 
+
+
+// Define 3_12_v project
+project(':Ch3:Recipe_3_12_v') {   
+  // Define defaultTasks, first clean then build for springintro
+  defaultTasks 'clean', 'build'
+  // Define dependencies
+  dependencies {
+    compile group: 'org.springframework', name: 'spring-core', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-expression', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-beans', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-context', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-aop', version:'3.2.0.RELEASE'
+    compile group: 'commons-logging', name: 'commons-logging', version:'1.1.1'
+    compile group: 'org.aspectj', name: 'aspectjtools',version:'1.6.2'
+    compile group: 'aopalliance', name: 'aopalliance', version:'1.0'           
+    compile group: 'log4j', name: 'log4j', version:'1.2.14'
+            
+   }
+   // Define how to build final JAR for project
+   jar {
+     //The following creates a fat-JAR with all dependencies embedded 
+     // from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+     //Instead use custom task to copy files to lib directory and create a custom manfiest
+     dependsOn copyDependenciesToLibDir
+     manifest.attributes("Main-Class": "com.apress.springrecipes.calculator.Main")
+     project.ext["CP"] = new StringBuffer()
+     configurations.runtime.allDependencies.each { dep ->
+       project.ext["CP"].append(' ')
+       project.ext["CP"].append("lib/${dep.getName()}-${dep.getVersion()}.jar")
+     }
+     project.ext["CP"].delete(0,1)
+     manifest.attributes("Class-Path": project.ext["CP"].toString())
+   }
+} // End 3_12_v project 

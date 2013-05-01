@@ -824,8 +824,8 @@ project(':Ch2:Recipe_2_10_iii') {
 } // End 2_10_iii project 
 
 
-// Define 2_11_i project
-project(':Ch2:Recipe_2_11_i') {   
+// Define 2_11 project
+project(':Ch2:Recipe_2_11') {   
   // Define defaultTasks, first clean then build for springintro
   defaultTasks 'clean', 'build'
   // Define dependencies
@@ -851,125 +851,7 @@ project(':Ch2:Recipe_2_11_i') {
      project.ext["CP"].delete(0,1)
      manifest.attributes("Class-Path": project.ext["CP"].toString())
    }
-} // End 2_11_i project 
-
-
-// Define 2_11_ii project
-project(':Ch2:Recipe_2_11_ii') {   
-  // Define defaultTasks, first clean then build for springintro
-  defaultTasks 'clean', 'build'
-  // Define dependencies
-  dependencies {
-    compile group: 'org.springframework', name: 'spring-core', version:'3.2.0.RELEASE'
-    compile group: 'org.springframework', name: 'spring-expression', version:'3.2.0.RELEASE'
-    compile group: 'org.springframework', name: 'spring-beans', version:'3.2.0.RELEASE'
-    compile group: 'org.springframework', name: 'spring-context', version:'3.2.0.RELEASE'
-    compile group: 'commons-logging', name: 'commons-logging', version:'1.1.1'
-   }
-   // Define how to build final JAR for project
-   jar {
-     //The following creates a fat-JAR with all dependencies embedded 
-     // from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
-     //Instead use custom task to copy files to lib directory and create a custom manfiest
-     dependsOn copyDependenciesToLibDir
-     manifest.attributes("Main-Class": "com.apress.springrecipes.shop.Main")
-     project.ext["CP"] = new StringBuffer()
-     configurations.runtime.allDependencies.each { dep ->
-       project.ext["CP"].append(' ')
-       project.ext["CP"].append("lib/${dep.getName()}-${dep.getVersion()}.jar")
-     }
-     project.ext["CP"].delete(0,1)
-     manifest.attributes("Class-Path": project.ext["CP"].toString())
-   }
-} // End 2_11_ii project 
-
-// Define 2_11_iii project
-project(':Ch2:Recipe_2_11_iii') {   
-  // Define defaultTasks, first clean then build for springintro
-  defaultTasks 'clean', 'build'
-  // Define dependencies
-  dependencies {
-    compile group: 'org.springframework', name: 'spring-core', version:'3.2.0.RELEASE'
-    compile group: 'org.springframework', name: 'spring-expression', version:'3.2.0.RELEASE'
-    compile group: 'org.springframework', name: 'spring-beans', version:'3.2.0.RELEASE'
-    compile group: 'org.springframework', name: 'spring-context', version:'3.2.0.RELEASE'
-    compile group: 'commons-logging', name: 'commons-logging', version:'1.1.1'
-   }
-   // Define how to build final JAR for project
-   jar {
-     //The following creates a fat-JAR with all dependencies embedded 
-     // from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
-     //Instead use custom task to copy files to lib directory and create a custom manfiest
-     dependsOn copyDependenciesToLibDir
-     manifest.attributes("Main-Class": "com.apress.springrecipes.shop.Main")
-     project.ext["CP"] = new StringBuffer()
-     configurations.runtime.allDependencies.each { dep ->
-       project.ext["CP"].append(' ')
-       project.ext["CP"].append("lib/${dep.getName()}-${dep.getVersion()}.jar")
-     }
-     project.ext["CP"].delete(0,1)
-     manifest.attributes("Class-Path": project.ext["CP"].toString())
-   }
-} // End 2_11_iii project 
-
-
-// Define 2_11_iv project
-project(':Ch2:Recipe_2_11_iv') {   
-  // Define defaultTasks, first clean then build for springintro
-  defaultTasks 'clean', 'build'
-  // Define dependencies
-  dependencies {
-    compile group: 'org.springframework', name: 'spring-core', version:'3.2.0.RELEASE'
-    compile group: 'org.springframework', name: 'spring-expression', version:'3.2.0.RELEASE'
-    compile group: 'org.springframework', name: 'spring-beans', version:'3.2.0.RELEASE'
-    compile group: 'org.springframework', name: 'spring-context', version:'3.2.0.RELEASE'
-    compile group: 'commons-logging', name: 'commons-logging', version:'1.1.1'
-   }
-   // Define how to build final JAR for project
-   jar {
-     //The following creates a fat-JAR with all dependencies embedded 
-     // from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
-     //Instead use custom task to copy files to lib directory and create a custom manfiest
-     dependsOn copyDependenciesToLibDir
-     manifest.attributes("Main-Class": "com.apress.springrecipes.shop.Main")
-     project.ext["CP"] = new StringBuffer()
-     configurations.runtime.allDependencies.each { dep ->
-       project.ext["CP"].append(' ')
-       project.ext["CP"].append("lib/${dep.getName()}-${dep.getVersion()}.jar")
-     }
-     project.ext["CP"].delete(0,1)
-     manifest.attributes("Class-Path": project.ext["CP"].toString())
-   }
-} // End 2_11_iv project 
-
-// Define 2_12 project
-project(':Ch2:Recipe_2_12') {   
-  // Define defaultTasks, first clean then build for springintro
-  defaultTasks 'clean', 'build'
-  // Define dependencies
-  dependencies {
-    compile group: 'org.springframework', name: 'spring-core', version:'3.2.0.RELEASE'
-    compile group: 'org.springframework', name: 'spring-expression', version:'3.2.0.RELEASE'
-    compile group: 'org.springframework', name: 'spring-beans', version:'3.2.0.RELEASE'
-    compile group: 'org.springframework', name: 'spring-context', version:'3.2.0.RELEASE'
-    compile group: 'commons-logging', name: 'commons-logging', version:'1.1.1'
-   }
-   // Define how to build final JAR for project
-   jar {
-     //The following creates a fat-JAR with all dependencies embedded 
-     // from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
-     //Instead use custom task to copy files to lib directory and create a custom manfiest
-     dependsOn copyDependenciesToLibDir
-     manifest.attributes("Main-Class": "com.apress.springrecipes.shop.Main")
-     project.ext["CP"] = new StringBuffer()
-     configurations.runtime.allDependencies.each { dep ->
-       project.ext["CP"].append(' ')
-       project.ext["CP"].append("lib/${dep.getName()}-${dep.getVersion()}.jar")
-     }
-     project.ext["CP"].delete(0,1)
-     manifest.attributes("Class-Path": project.ext["CP"].toString())
-   }
-} // End 2_12 project 
+} // End 2_11 project 
 
 // Define 2_13_i project
 project(':Ch2:Recipe_2_13_i') {   
@@ -981,7 +863,6 @@ project(':Ch2:Recipe_2_13_i') {
     compile group: 'org.springframework', name: 'spring-expression', version:'3.2.0.RELEASE'
     compile group: 'org.springframework', name: 'spring-beans', version:'3.2.0.RELEASE'
     compile group: 'org.springframework', name: 'spring-context', version:'3.2.0.RELEASE'
-    compile group: 'org.springframework', name: 'spring-aop', version:'3.2.0.RELEASE'
     compile group: 'commons-logging', name: 'commons-logging', version:'1.1.1'
    }
    // Define how to build final JAR for project
@@ -1001,8 +882,126 @@ project(':Ch2:Recipe_2_13_i') {
    }
 } // End 2_13_i project 
 
+
 // Define 2_13_ii project
 project(':Ch2:Recipe_2_13_ii') {   
+  // Define defaultTasks, first clean then build for springintro
+  defaultTasks 'clean', 'build'
+  // Define dependencies
+  dependencies {
+    compile group: 'org.springframework', name: 'spring-core', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-expression', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-beans', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-context', version:'3.2.0.RELEASE'
+    compile group: 'commons-logging', name: 'commons-logging', version:'1.1.1'
+   }
+   // Define how to build final JAR for project
+   jar {
+     //The following creates a fat-JAR with all dependencies embedded 
+     // from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+     //Instead use custom task to copy files to lib directory and create a custom manfiest
+     dependsOn copyDependenciesToLibDir
+     manifest.attributes("Main-Class": "com.apress.springrecipes.shop.Main")
+     project.ext["CP"] = new StringBuffer()
+     configurations.runtime.allDependencies.each { dep ->
+       project.ext["CP"].append(' ')
+       project.ext["CP"].append("lib/${dep.getName()}-${dep.getVersion()}.jar")
+     }
+     project.ext["CP"].delete(0,1)
+     manifest.attributes("Class-Path": project.ext["CP"].toString())
+   }
+} // End 2_13_ii project 
+
+// Define 2_13_iii project
+project(':Ch2:Recipe_2_13_iii') {   
+  // Define defaultTasks, first clean then build for springintro
+  defaultTasks 'clean', 'build'
+  // Define dependencies
+  dependencies {
+    compile group: 'org.springframework', name: 'spring-core', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-expression', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-beans', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-context', version:'3.2.0.RELEASE'
+    compile group: 'commons-logging', name: 'commons-logging', version:'1.1.1'
+   }
+   // Define how to build final JAR for project
+   jar {
+     //The following creates a fat-JAR with all dependencies embedded 
+     // from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+     //Instead use custom task to copy files to lib directory and create a custom manfiest
+     dependsOn copyDependenciesToLibDir
+     manifest.attributes("Main-Class": "com.apress.springrecipes.shop.Main")
+     project.ext["CP"] = new StringBuffer()
+     configurations.runtime.allDependencies.each { dep ->
+       project.ext["CP"].append(' ')
+       project.ext["CP"].append("lib/${dep.getName()}-${dep.getVersion()}.jar")
+     }
+     project.ext["CP"].delete(0,1)
+     manifest.attributes("Class-Path": project.ext["CP"].toString())
+   }
+} // End 2_13_iii project 
+
+
+// Define 2_13_iv project
+project(':Ch2:Recipe_2_13_iv') {   
+  // Define defaultTasks, first clean then build for springintro
+  defaultTasks 'clean', 'build'
+  // Define dependencies
+  dependencies {
+    compile group: 'org.springframework', name: 'spring-core', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-expression', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-beans', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-context', version:'3.2.0.RELEASE'
+    compile group: 'commons-logging', name: 'commons-logging', version:'1.1.1'
+   }
+   // Define how to build final JAR for project
+   jar {
+     //The following creates a fat-JAR with all dependencies embedded 
+     // from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+     //Instead use custom task to copy files to lib directory and create a custom manfiest
+     dependsOn copyDependenciesToLibDir
+     manifest.attributes("Main-Class": "com.apress.springrecipes.shop.Main")
+     project.ext["CP"] = new StringBuffer()
+     configurations.runtime.allDependencies.each { dep ->
+       project.ext["CP"].append(' ')
+       project.ext["CP"].append("lib/${dep.getName()}-${dep.getVersion()}.jar")
+     }
+     project.ext["CP"].delete(0,1)
+     manifest.attributes("Class-Path": project.ext["CP"].toString())
+   }
+} // End 2_13_iv project 
+
+// Define 2_14 project
+project(':Ch2:Recipe_2_14') {   
+  // Define defaultTasks, first clean then build for springintro
+  defaultTasks 'clean', 'build'
+  // Define dependencies
+  dependencies {
+    compile group: 'org.springframework', name: 'spring-core', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-expression', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-beans', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-context', version:'3.2.0.RELEASE'
+    compile group: 'commons-logging', name: 'commons-logging', version:'1.1.1'
+   }
+   // Define how to build final JAR for project
+   jar {
+     //The following creates a fat-JAR with all dependencies embedded 
+     // from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+     //Instead use custom task to copy files to lib directory and create a custom manfiest
+     dependsOn copyDependenciesToLibDir
+     manifest.attributes("Main-Class": "com.apress.springrecipes.shop.Main")
+     project.ext["CP"] = new StringBuffer()
+     configurations.runtime.allDependencies.each { dep ->
+       project.ext["CP"].append(' ')
+       project.ext["CP"].append("lib/${dep.getName()}-${dep.getVersion()}.jar")
+     }
+     project.ext["CP"].delete(0,1)
+     manifest.attributes("Class-Path": project.ext["CP"].toString())
+   }
+} // End 2_14 project 
+
+// Define 2_15_i project
+project(':Ch2:Recipe_2_15_i') {   
   // Define defaultTasks, first clean then build for springintro
   defaultTasks 'clean', 'build'
   // Define dependencies
@@ -1029,11 +1028,10 @@ project(':Ch2:Recipe_2_13_ii') {
      project.ext["CP"].delete(0,1)
      manifest.attributes("Class-Path": project.ext["CP"].toString())
    }
-} // End 2_13_ii project 
+} // End 2_15_i project 
 
-
-// Define 2_14_i project
-project(':Ch2:Recipe_2_14_i') {   
+// Define 2_15_ii project
+project(':Ch2:Recipe_2_15_ii') {   
   // Define defaultTasks, first clean then build for springintro
   defaultTasks 'clean', 'build'
   // Define dependencies
@@ -1042,6 +1040,7 @@ project(':Ch2:Recipe_2_14_i') {
     compile group: 'org.springframework', name: 'spring-expression', version:'3.2.0.RELEASE'
     compile group: 'org.springframework', name: 'spring-beans', version:'3.2.0.RELEASE'
     compile group: 'org.springframework', name: 'spring-context', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-aop', version:'3.2.0.RELEASE'
     compile group: 'commons-logging', name: 'commons-logging', version:'1.1.1'
    }
    // Define how to build final JAR for project
@@ -1059,96 +1058,7 @@ project(':Ch2:Recipe_2_14_i') {
      project.ext["CP"].delete(0,1)
      manifest.attributes("Class-Path": project.ext["CP"].toString())
    }
-} // End 2_14_i project 
-
-
-// Define 2_14_ii project
-project(':Ch2:Recipe_2_14_ii') {   
-  // Define defaultTasks, first clean then build for springintro
-  defaultTasks 'clean', 'build'
-  // Define dependencies
-  dependencies {
-    compile group: 'org.springframework', name: 'spring-core', version:'3.2.0.RELEASE'
-    compile group: 'org.springframework', name: 'spring-expression', version:'3.2.0.RELEASE'
-    compile group: 'org.springframework', name: 'spring-beans', version:'3.2.0.RELEASE'
-    compile group: 'org.springframework', name: 'spring-context', version:'3.2.0.RELEASE'
-    compile group: 'commons-logging', name: 'commons-logging', version:'1.1.1'
-   }
-   // Define how to build final JAR for project
-   jar {
-     //The following creates a fat-JAR with all dependencies embedded 
-     // from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
-     //Instead use custom task to copy files to lib directory and create a custom manfiest
-     dependsOn copyDependenciesToLibDir
-     manifest.attributes("Main-Class": "com.apress.springrecipes.shop.Main")
-     project.ext["CP"] = new StringBuffer()
-     configurations.runtime.allDependencies.each { dep ->
-       project.ext["CP"].append(' ')
-       project.ext["CP"].append("lib/${dep.getName()}-${dep.getVersion()}.jar")
-     }
-     project.ext["CP"].delete(0,1)
-     manifest.attributes("Class-Path": project.ext["CP"].toString())
-   }
-} // End 2_14_ii project
-
-// Define 2_14_iii project
-project(':Ch2:Recipe_2_14_iii') {   
-  // Define defaultTasks, first clean then build for springintro
-  defaultTasks 'clean', 'build'
-  // Define dependencies
-  dependencies {
-    compile group: 'org.springframework', name: 'spring-core', version:'3.2.0.RELEASE'
-    compile group: 'org.springframework', name: 'spring-expression', version:'3.2.0.RELEASE'
-    compile group: 'org.springframework', name: 'spring-beans', version:'3.2.0.RELEASE'
-    compile group: 'org.springframework', name: 'spring-context', version:'3.2.0.RELEASE'
-    compile group: 'commons-logging', name: 'commons-logging', version:'1.1.1'
-   }
-   // Define how to build final JAR for project
-   jar {
-     //The following creates a fat-JAR with all dependencies embedded 
-     // from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
-     //Instead use custom task to copy files to lib directory and create a custom manfiest
-     dependsOn copyDependenciesToLibDir
-     manifest.attributes("Main-Class": "com.apress.springrecipes.shop.Main")
-     project.ext["CP"] = new StringBuffer()
-     configurations.runtime.allDependencies.each { dep ->
-       project.ext["CP"].append(' ')
-       project.ext["CP"].append("lib/${dep.getName()}-${dep.getVersion()}.jar")
-     }
-     project.ext["CP"].delete(0,1)
-     manifest.attributes("Class-Path": project.ext["CP"].toString())
-   }
-} // End 2_14_iii project
-
-
-// Define 2_15 project
-project(':Ch2:Recipe_2_15') {   
-  // Define defaultTasks, first clean then build for springintro
-  defaultTasks 'clean', 'build'
-  // Define dependencies
-  dependencies {
-    compile group: 'org.springframework', name: 'spring-core', version:'3.2.0.RELEASE'
-    compile group: 'org.springframework', name: 'spring-expression', version:'3.2.0.RELEASE'
-    compile group: 'org.springframework', name: 'spring-beans', version:'3.2.0.RELEASE'
-    compile group: 'org.springframework', name: 'spring-context', version:'3.2.0.RELEASE'
-    compile group: 'commons-logging', name: 'commons-logging', version:'1.1.1'
-   }
-   // Define how to build final JAR for project
-   jar {
-     //The following creates a fat-JAR with all dependencies embedded 
-     // from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
-     //Instead use custom task to copy files to lib directory and create a custom manfiest
-     dependsOn copyDependenciesToLibDir
-     manifest.attributes("Main-Class": "com.apress.springrecipes.shop.Main")
-     project.ext["CP"] = new StringBuffer()
-     configurations.runtime.allDependencies.each { dep ->
-       project.ext["CP"].append(' ')
-       project.ext["CP"].append("lib/${dep.getName()}-${dep.getVersion()}.jar")
-     }
-     project.ext["CP"].delete(0,1)
-     manifest.attributes("Class-Path": project.ext["CP"].toString())
-   }
-} // End 2_15 project 
+} // End 2_15_ii project 
 
 
 // Define 2_16_i project
@@ -1169,7 +1079,7 @@ project(':Ch2:Recipe_2_16_i') {
      // from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
      //Instead use custom task to copy files to lib directory and create a custom manfiest
      dependsOn copyDependenciesToLibDir
-     manifest.attributes("Main-Class": "com.apress.springrecipes.sequence.Main")
+     manifest.attributes("Main-Class": "com.apress.springrecipes.shop.Main")
      project.ext["CP"] = new StringBuffer()
      configurations.runtime.allDependencies.each { dep ->
        project.ext["CP"].append(' ')
@@ -1199,7 +1109,7 @@ project(':Ch2:Recipe_2_16_ii') {
      // from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
      //Instead use custom task to copy files to lib directory and create a custom manfiest
      dependsOn copyDependenciesToLibDir
-     manifest.attributes("Main-Class": "com.apress.springrecipes.sequence.Main")
+     manifest.attributes("Main-Class": "com.apress.springrecipes.shop.Main")
      project.ext["CP"] = new StringBuffer()
      configurations.runtime.allDependencies.each { dep ->
        project.ext["CP"].append(' ')
@@ -1208,8 +1118,7 @@ project(':Ch2:Recipe_2_16_ii') {
      project.ext["CP"].delete(0,1)
      manifest.attributes("Class-Path": project.ext["CP"].toString())
    }
-} // End 2_16_ii project 
-
+} // End 2_16_ii project
 
 // Define 2_16_iii project
 project(':Ch2:Recipe_2_16_iii') {   
@@ -1229,7 +1138,7 @@ project(':Ch2:Recipe_2_16_iii') {
      // from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
      //Instead use custom task to copy files to lib directory and create a custom manfiest
      dependsOn copyDependenciesToLibDir
-     manifest.attributes("Main-Class": "com.apress.springrecipes.sequence.Main")
+     manifest.attributes("Main-Class": "com.apress.springrecipes.shop.Main")
      project.ext["CP"] = new StringBuffer()
      configurations.runtime.allDependencies.each { dep ->
        project.ext["CP"].append(' ')
@@ -1238,37 +1147,8 @@ project(':Ch2:Recipe_2_16_iii') {
      project.ext["CP"].delete(0,1)
      manifest.attributes("Class-Path": project.ext["CP"].toString())
    }
-} // End 2_16_iii project 
+} // End 2_16_iii project
 
-
-// Define 2_16_iv project
-project(':Ch2:Recipe_2_16_iv') {   
-  // Define defaultTasks, first clean then build for springintro
-  defaultTasks 'clean', 'build'
-  // Define dependencies
-  dependencies {
-    compile group: 'org.springframework', name: 'spring-core', version:'3.2.0.RELEASE'
-    compile group: 'org.springframework', name: 'spring-expression', version:'3.2.0.RELEASE'
-    compile group: 'org.springframework', name: 'spring-beans', version:'3.2.0.RELEASE'
-    compile group: 'org.springframework', name: 'spring-context', version:'3.2.0.RELEASE'
-    compile group: 'commons-logging', name: 'commons-logging', version:'1.1.1'
-   }
-   // Define how to build final JAR for project
-   jar {
-     //The following creates a fat-JAR with all dependencies embedded 
-     // from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
-     //Instead use custom task to copy files to lib directory and create a custom manfiest
-     dependsOn copyDependenciesToLibDir
-     manifest.attributes("Main-Class": "com.apress.springrecipes.sequence.Main")
-     project.ext["CP"] = new StringBuffer()
-     configurations.runtime.allDependencies.each { dep ->
-       project.ext["CP"].append(' ')
-       project.ext["CP"].append("lib/${dep.getName()}-${dep.getVersion()}.jar")
-     }
-     project.ext["CP"].delete(0,1)
-     manifest.attributes("Class-Path": project.ext["CP"].toString())
-   }
-} // End 2_16_iv project 
 
 // Define 2_17_i project
 project(':Ch2:Recipe_2_17_i') {   
@@ -1281,9 +1161,6 @@ project(':Ch2:Recipe_2_17_i') {
     compile group: 'org.springframework', name: 'spring-beans', version:'3.2.0.RELEASE'
     compile group: 'org.springframework', name: 'spring-context', version:'3.2.0.RELEASE'
     compile group: 'commons-logging', name: 'commons-logging', version:'1.1.1'
-    compile group: 'org.springframework', name: 'spring-aop', version:'3.2.0.RELEASE'
-    compile group: 'aopalliance', name: 'aopalliance', version:'1.0'
-    compile group: 'org.jruby', name: 'jruby', version:'1.7.3'
    }
    // Define how to build final JAR for project
    jar {
@@ -1291,7 +1168,7 @@ project(':Ch2:Recipe_2_17_i') {
      // from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
      //Instead use custom task to copy files to lib directory and create a custom manfiest
      dependsOn copyDependenciesToLibDir
-     manifest.attributes("Main-Class": "com.apress.springrecipes.interest.Main")
+     manifest.attributes("Main-Class": "com.apress.springrecipes.sequence.Main")
      project.ext["CP"] = new StringBuffer()
      configurations.runtime.allDependencies.each { dep ->
        project.ext["CP"].append(' ')
@@ -1314,9 +1191,6 @@ project(':Ch2:Recipe_2_17_ii') {
     compile group: 'org.springframework', name: 'spring-beans', version:'3.2.0.RELEASE'
     compile group: 'org.springframework', name: 'spring-context', version:'3.2.0.RELEASE'
     compile group: 'commons-logging', name: 'commons-logging', version:'1.1.1'
-    compile group: 'org.springframework', name: 'spring-aop', version:'3.2.0.RELEASE'
-    compile group: 'aopalliance', name: 'aopalliance', version:'1.0'
-    compile group: 'org.codehaus.groovy', name: 'groovy-all', version:'2.1.2'
    }
    // Define how to build final JAR for project
    jar {
@@ -1324,7 +1198,7 @@ project(':Ch2:Recipe_2_17_ii') {
      // from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
      //Instead use custom task to copy files to lib directory and create a custom manfiest
      dependsOn copyDependenciesToLibDir
-     manifest.attributes("Main-Class": "com.apress.springrecipes.interest.Main")
+     manifest.attributes("Main-Class": "com.apress.springrecipes.sequence.Main")
      project.ext["CP"] = new StringBuffer()
      configurations.runtime.allDependencies.each { dep ->
        project.ext["CP"].append(' ')
@@ -1347,9 +1221,6 @@ project(':Ch2:Recipe_2_17_iii') {
     compile group: 'org.springframework', name: 'spring-beans', version:'3.2.0.RELEASE'
     compile group: 'org.springframework', name: 'spring-context', version:'3.2.0.RELEASE'
     compile group: 'commons-logging', name: 'commons-logging', version:'1.1.1'
-    compile group: 'org.springframework', name: 'spring-aop', version:'3.2.0.RELEASE'
-    compile group: 'aopalliance', name: 'aopalliance', version:'1.0'
-    compile group: 'org.beanshell', name: 'bsh', version:'2.0b5'
    }
    // Define how to build final JAR for project
    jar {
@@ -1357,7 +1228,7 @@ project(':Ch2:Recipe_2_17_iii') {
      // from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
      //Instead use custom task to copy files to lib directory and create a custom manfiest
      dependsOn copyDependenciesToLibDir
-     manifest.attributes("Main-Class": "com.apress.springrecipes.interest.Main")
+     manifest.attributes("Main-Class": "com.apress.springrecipes.sequence.Main")
      project.ext["CP"] = new StringBuffer()
      configurations.runtime.allDependencies.each { dep ->
        project.ext["CP"].append(' ')
@@ -1367,6 +1238,36 @@ project(':Ch2:Recipe_2_17_iii') {
      manifest.attributes("Class-Path": project.ext["CP"].toString())
    }
 } // End 2_17_iii project 
+
+
+// Define 2_17_iv project
+project(':Ch2:Recipe_2_17_iv') {   
+  // Define defaultTasks, first clean then build for springintro
+  defaultTasks 'clean', 'build'
+  // Define dependencies
+  dependencies {
+    compile group: 'org.springframework', name: 'spring-core', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-expression', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-beans', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-context', version:'3.2.0.RELEASE'
+    compile group: 'commons-logging', name: 'commons-logging', version:'1.1.1'
+   }
+   // Define how to build final JAR for project
+   jar {
+     //The following creates a fat-JAR with all dependencies embedded 
+     // from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+     //Instead use custom task to copy files to lib directory and create a custom manfiest
+     dependsOn copyDependenciesToLibDir
+     manifest.attributes("Main-Class": "com.apress.springrecipes.sequence.Main")
+     project.ext["CP"] = new StringBuffer()
+     configurations.runtime.allDependencies.each { dep ->
+       project.ext["CP"].append(' ')
+       project.ext["CP"].append("lib/${dep.getName()}-${dep.getVersion()}.jar")
+     }
+     project.ext["CP"].delete(0,1)
+     manifest.attributes("Class-Path": project.ext["CP"].toString())
+   }
+} // End 2_17_iv project 
 
 // Define 2_18_i project
 project(':Ch2:Recipe_2_18_i') {   
@@ -1564,7 +1465,6 @@ project(':Ch2:Recipe_2_19_iii') {
    }
 } // End 2_19_iii project 
 
-
 // Define 2_20_i project
 project(':Ch2:Recipe_2_20_i') {   
   // Define defaultTasks, first clean then build for springintro
@@ -1662,3 +1562,102 @@ project(':Ch2:Recipe_2_20_iii') {
      manifest.attributes("Class-Path": project.ext["CP"].toString())
    }
 } // End 2_20_iii project 
+
+
+// Define 2_21_i project
+project(':Ch2:Recipe_2_21_i') {   
+  // Define defaultTasks, first clean then build for springintro
+  defaultTasks 'clean', 'build'
+  // Define dependencies
+  dependencies {
+    compile group: 'org.springframework', name: 'spring-core', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-expression', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-beans', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-context', version:'3.2.0.RELEASE'
+    compile group: 'commons-logging', name: 'commons-logging', version:'1.1.1'
+    compile group: 'org.springframework', name: 'spring-aop', version:'3.2.0.RELEASE'
+    compile group: 'aopalliance', name: 'aopalliance', version:'1.0'
+    compile group: 'org.jruby', name: 'jruby', version:'1.7.3'
+   }
+   // Define how to build final JAR for project
+   jar {
+     //The following creates a fat-JAR with all dependencies embedded 
+     // from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+     //Instead use custom task to copy files to lib directory and create a custom manfiest
+     dependsOn copyDependenciesToLibDir
+     manifest.attributes("Main-Class": "com.apress.springrecipes.interest.Main")
+     project.ext["CP"] = new StringBuffer()
+     configurations.runtime.allDependencies.each { dep ->
+       project.ext["CP"].append(' ')
+       project.ext["CP"].append("lib/${dep.getName()}-${dep.getVersion()}.jar")
+     }
+     project.ext["CP"].delete(0,1)
+     manifest.attributes("Class-Path": project.ext["CP"].toString())
+   }
+} // End 2_21_i project 
+
+
+// Define 2_21_ii project
+project(':Ch2:Recipe_2_21_ii') {   
+  // Define defaultTasks, first clean then build for springintro
+  defaultTasks 'clean', 'build'
+  // Define dependencies
+  dependencies {
+    compile group: 'org.springframework', name: 'spring-core', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-expression', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-beans', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-context', version:'3.2.0.RELEASE'
+    compile group: 'commons-logging', name: 'commons-logging', version:'1.1.1'
+    compile group: 'org.springframework', name: 'spring-aop', version:'3.2.0.RELEASE'
+    compile group: 'aopalliance', name: 'aopalliance', version:'1.0'
+    compile group: 'org.codehaus.groovy', name: 'groovy-all', version:'2.1.2'
+   }
+   // Define how to build final JAR for project
+   jar {
+     //The following creates a fat-JAR with all dependencies embedded 
+     // from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+     //Instead use custom task to copy files to lib directory and create a custom manfiest
+     dependsOn copyDependenciesToLibDir
+     manifest.attributes("Main-Class": "com.apress.springrecipes.interest.Main")
+     project.ext["CP"] = new StringBuffer()
+     configurations.runtime.allDependencies.each { dep ->
+       project.ext["CP"].append(' ')
+       project.ext["CP"].append("lib/${dep.getName()}-${dep.getVersion()}.jar")
+     }
+     project.ext["CP"].delete(0,1)
+     manifest.attributes("Class-Path": project.ext["CP"].toString())
+   }
+} // End 2_21_ii project 
+
+
+// Define 2_21_iii project
+project(':Ch2:Recipe_2_20_iii') {   
+  // Define defaultTasks, first clean then build for springintro
+  defaultTasks 'clean', 'build'
+  // Define dependencies
+  dependencies {
+    compile group: 'org.springframework', name: 'spring-core', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-expression', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-beans', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-context', version:'3.2.0.RELEASE'
+    compile group: 'commons-logging', name: 'commons-logging', version:'1.1.1'
+    compile group: 'org.springframework', name: 'spring-aop', version:'3.2.0.RELEASE'
+    compile group: 'aopalliance', name: 'aopalliance', version:'1.0'
+    compile group: 'org.beanshell', name: 'bsh', version:'2.0b5'
+   }
+   // Define how to build final JAR for project
+   jar {
+     //The following creates a fat-JAR with all dependencies embedded 
+     // from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+     //Instead use custom task to copy files to lib directory and create a custom manfiest
+     dependsOn copyDependenciesToLibDir
+     manifest.attributes("Main-Class": "com.apress.springrecipes.interest.Main")
+     project.ext["CP"] = new StringBuffer()
+     configurations.runtime.allDependencies.each { dep ->
+       project.ext["CP"].append(' ')
+       project.ext["CP"].append("lib/${dep.getName()}-${dep.getVersion()}.jar")
+     }
+     project.ext["CP"].delete(0,1)
+     manifest.attributes("Class-Path": project.ext["CP"].toString())
+   }
+} // End 2_21_iii project 

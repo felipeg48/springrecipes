@@ -1,9 +1,0 @@
-double rate;
-
-void setRate(double aRate) {
-    rate = aRate;
-}
-
-double calculate(double amount, double year) {
-    return amount * year * rate;
-}

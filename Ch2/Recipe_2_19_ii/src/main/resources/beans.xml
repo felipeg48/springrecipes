@@ -12,8 +12,7 @@
   </bean>
 
   <lang:groovy id="interestCalculator"
-	       script-source="classpath:com/apress/springrecipes/interest/SimpleInterestCalculator.groovy"
-	       refresh-check-delay="5000">
+	       script-source="classpath:com/apress/springrecipes/interest/SimpleInterestCalculator.groovy">
     <lang:property name="rateCalculator" ref="rateCalculator" />
   </lang:groovy>
 

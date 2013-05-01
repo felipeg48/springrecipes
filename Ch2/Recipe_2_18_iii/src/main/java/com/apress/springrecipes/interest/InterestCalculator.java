@@ -2,6 +2,6 @@ package com.apress.springrecipes.interest;
 
 public interface InterestCalculator {
 
-    public void setRateCalculator(RateCalculator rateCalculator);
+    public void setRate(double rate);
     public double calculate(double amount, double year);
 }

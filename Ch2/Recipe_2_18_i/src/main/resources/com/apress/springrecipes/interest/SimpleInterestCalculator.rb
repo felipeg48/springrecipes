@@ -1,13 +1,12 @@
 class SimpleInterestCalculator
 
-    def setRateCalculator(rateCalculator)
-        @rateCalculator = rateCalculator
+    def setRate(rate)
+        @rate = rate
     end
 
     def calculate(amount, year)
-        amount * year * @rateCalculator.getAnnualRate
+        amount * year * @rate
     end
 end
-
 
 SimpleInterestCalculator.new

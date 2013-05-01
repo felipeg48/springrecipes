@@ -13,8 +13,7 @@
 
   <lang:jruby id="interestCalculator"
 	      script-source="classpath:com/apress/springrecipes/interest/SimpleInterestCalculator.rb"
-	      script-interfaces="com.apress.springrecipes.interest.InterestCalculator"
-	      refresh-check-delay="5000">
+	      script-interfaces="com.apress.springrecipes.interest.InterestCalculator">
     <lang:property name="rateCalculator" ref="rateCalculator" />
   </lang:jruby>
 

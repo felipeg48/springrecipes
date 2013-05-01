@@ -3,10 +3,6 @@ import java.text.DecimalFormat;
 
 public abstract class Product {
 
-    public static final Product AAA = new Battery("AAA", 2.5);
-    public static final Product CDRW = new Disc("CD-RW", 1.5);
-    public static final Product DVDRW = new Disc("DVD-RW", 3.0);
-
     private String name;
     private double price;
     
