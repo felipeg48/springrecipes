@@ -6,3 +6,8 @@ include 'Ch3:Recipe_3_1_i','Ch3:Recipe_3_1_ii','Ch3:Recipe_3_1_iii','Ch3:Recipe_
 
 include 'Ch4:springweb'
 //include 'springweb_withredis'
+
+include 'Ch12:Recipe_12_1_i','Ch12:Recipe_12_1_ii'
+
+
+include 'Ch15:Recipe_15_1_i','Ch15:Recipe_15_1_ii','Ch15:Recipe_15_1_iii','Ch15:Recipe_15_1_iv','Ch15:Recipe_15_1_v','Ch15:Recipe_15_1_vi','Ch15:Recipe_15_1_vii','Ch15:Recipe_15_1_viii'
