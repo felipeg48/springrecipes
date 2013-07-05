@@ -1,0 +1,882 @@
+// Define 16_1_i_FrontDesk project
+project(':Ch16:Recipe_16_1_i_FrontDesk') {   
+  // Define defaultTasks, first clean then build for springintro
+  defaultTasks 'clean', 'build'
+  // Define dependencies
+  dependencies {
+    compile group: 'org.springframework', name: 'spring-core', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-expression', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-beans', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-context', version:'3.2.0.RELEASE'
+    compile group: 'javax.jms', name: 'jms-api', version:'1.1-rev-1'
+    compile group: 'org.apache.activemq', name: 'activemq-all', version:'5.7.0'
+    compile group: 'commons-logging', name: 'commons-logging', version:'1.1.1'
+   }
+   // Define how to build final JAR for project
+   jar {
+     //The following creates a fat-JAR with all dependencies embedded 
+     // from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+     //Instead use custom task to copy files to lib directory and create a custom manfiest
+     dependsOn copyDependenciesToLibDir
+     manifest.attributes("Main-Class": "com.apress.springrecipes.post.FrontDeskMain")
+     project.ext["CP"] = new StringBuffer()
+     configurations.runtime.allDependencies.each { dep ->
+       project.ext["CP"].append(' ')
+       project.ext["CP"].append("lib/${dep.getName()}-${dep.getVersion()}.jar")
+     }
+     project.ext["CP"].delete(0,1)
+     manifest.attributes("Class-Path": project.ext["CP"].toString())
+   }
+} // End 16_1_i_FrontDesk project 
+
+
+// Define 16_1_i_BackOffice project
+project(':Ch16:Recipe_16_1_i_BackOffice') {   
+  // Define defaultTasks, first clean then build for springintro
+  defaultTasks 'clean', 'build'
+  // Define dependencies
+  dependencies {
+    compile group: 'org.springframework', name: 'spring-core', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-expression', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-beans', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-context', version:'3.2.0.RELEASE'
+    compile group: 'javax.jms', name: 'jms-api', version:'1.1-rev-1'
+    compile group: 'org.apache.activemq', name: 'activemq-all', version:'5.7.0'
+    compile group: 'commons-logging', name: 'commons-logging', version:'1.1.1'
+   }
+   // Define how to build final JAR for project
+   jar {
+     //The following creates a fat-JAR with all dependencies embedded 
+     // from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+     //Instead use custom task to copy files to lib directory and create a custom manfiest
+     dependsOn copyDependenciesToLibDir
+     manifest.attributes("Main-Class": "com.apress.springrecipes.post.BackOfficeMain")
+     project.ext["CP"] = new StringBuffer()
+     configurations.runtime.allDependencies.each { dep ->
+       project.ext["CP"].append(' ')
+       project.ext["CP"].append("lib/${dep.getName()}-${dep.getVersion()}.jar")
+     }
+     project.ext["CP"].delete(0,1)
+     manifest.attributes("Class-Path": project.ext["CP"].toString())
+   }
+} // End 16_1_i_BackOffice project 
+
+
+
+// Define 16_1_ii_FrontDesk project
+project(':Ch16:Recipe_16_1_ii_FrontDesk') {   
+  // Define defaultTasks, first clean then build for springintro
+  defaultTasks 'clean', 'build'
+  // Define dependencies
+  dependencies {
+    compile group: 'org.springframework', name: 'spring-core', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-expression', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-beans', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-context', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-jms', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-tx', version:'3.2.0.RELEASE'
+    compile group: 'javax.jms', name: 'jms-api', version:'1.1-rev-1'
+    compile group: 'org.apache.activemq', name: 'activemq-all', version:'5.7.0'
+    compile group: 'commons-logging', name: 'commons-logging', version:'1.1.1'
+   }
+   // Define how to build final JAR for project
+   jar {
+     //The following creates a fat-JAR with all dependencies embedded 
+     // from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+     //Instead use custom task to copy files to lib directory and create a custom manfiest
+     dependsOn copyDependenciesToLibDir
+     manifest.attributes("Main-Class": "com.apress.springrecipes.post.FrontDeskMain")
+     project.ext["CP"] = new StringBuffer()
+     configurations.runtime.allDependencies.each { dep ->
+       project.ext["CP"].append(' ')
+       project.ext["CP"].append("lib/${dep.getName()}-${dep.getVersion()}.jar")
+     }
+     project.ext["CP"].delete(0,1)
+     manifest.attributes("Class-Path": project.ext["CP"].toString())
+   }
+} // End 16_1_ii_FrontDesk project 
+
+
+// Define 16_1_ii_BackOffice project
+project(':Ch16:Recipe_16_1_ii_BackOffice') {   
+  // Define defaultTasks, first clean then build for springintro
+  defaultTasks 'clean', 'build'
+  // Define dependencies
+  dependencies {
+    compile group: 'org.springframework', name: 'spring-core', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-expression', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-beans', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-context', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-jms', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-tx', version:'3.2.0.RELEASE'
+    compile group: 'javax.jms', name: 'jms-api', version:'1.1-rev-1'
+    compile group: 'org.apache.activemq', name: 'activemq-all', version:'5.7.0'
+    compile group: 'commons-logging', name: 'commons-logging', version:'1.1.1'
+   }
+   // Define how to build final JAR for project
+   jar {
+     //The following creates a fat-JAR with all dependencies embedded 
+     // from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+     //Instead use custom task to copy files to lib directory and create a custom manfiest
+     dependsOn copyDependenciesToLibDir
+     manifest.attributes("Main-Class": "com.apress.springrecipes.post.BackOfficeMain")
+     project.ext["CP"] = new StringBuffer()
+     configurations.runtime.allDependencies.each { dep ->
+       project.ext["CP"].append(' ')
+       project.ext["CP"].append("lib/${dep.getName()}-${dep.getVersion()}.jar")
+     }
+     project.ext["CP"].delete(0,1)
+     manifest.attributes("Class-Path": project.ext["CP"].toString())
+   }
+} // End 16_1_ii_BackOffice project 
+
+
+// Define 16_1_iii_FrontDesk project
+project(':Ch16:Recipe_16_1_iii_FrontDesk') {   
+  // Define defaultTasks, first clean then build for springintro
+  defaultTasks 'clean', 'build'
+  // Define dependencies
+  dependencies {
+    compile group: 'org.springframework', name: 'spring-core', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-expression', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-beans', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-context', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-jms', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-tx', version:'3.2.0.RELEASE'
+    compile group: 'javax.jms', name: 'jms-api', version:'1.1-rev-1'
+    compile group: 'org.apache.activemq', name: 'activemq-all', version:'5.7.0'
+    compile group: 'commons-logging', name: 'commons-logging', version:'1.1.1'
+   }
+   // Define how to build final JAR for project
+   jar {
+     //The following creates a fat-JAR with all dependencies embedded 
+     // from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+     //Instead use custom task to copy files to lib directory and create a custom manfiest
+     dependsOn copyDependenciesToLibDir
+     manifest.attributes("Main-Class": "com.apress.springrecipes.post.FrontDeskMain")
+     project.ext["CP"] = new StringBuffer()
+     configurations.runtime.allDependencies.each { dep ->
+       project.ext["CP"].append(' ')
+       project.ext["CP"].append("lib/${dep.getName()}-${dep.getVersion()}.jar")
+     }
+     project.ext["CP"].delete(0,1)
+     manifest.attributes("Class-Path": project.ext["CP"].toString())
+   }
+} // End 16_1_iii_FrontDesk project 
+
+
+// Define 16_1_iii_BackOffice project
+project(':Ch16:Recipe_16_1_iii_BackOffice') {   
+  // Define defaultTasks, first clean then build for springintro
+  defaultTasks 'clean', 'build'
+  // Define dependencies
+  dependencies {
+    compile group: 'org.springframework', name: 'spring-core', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-expression', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-beans', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-context', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-jms', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-tx', version:'3.2.0.RELEASE'
+    compile group: 'javax.jms', name: 'jms-api', version:'1.1-rev-1'
+    compile group: 'org.apache.activemq', name: 'activemq-all', version:'5.7.0'
+    compile group: 'commons-logging', name: 'commons-logging', version:'1.1.1'
+   }
+   // Define how to build final JAR for project
+   jar {
+     //The following creates a fat-JAR with all dependencies embedded 
+     // from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+     //Instead use custom task to copy files to lib directory and create a custom manfiest
+     dependsOn copyDependenciesToLibDir
+     manifest.attributes("Main-Class": "com.apress.springrecipes.post.BackOfficeMain")
+     project.ext["CP"] = new StringBuffer()
+     configurations.runtime.allDependencies.each { dep ->
+       project.ext["CP"].append(' ')
+       project.ext["CP"].append("lib/${dep.getName()}-${dep.getVersion()}.jar")
+     }
+     project.ext["CP"].delete(0,1)
+     manifest.attributes("Class-Path": project.ext["CP"].toString())
+   }
+} // End 16_1_iii_BackOffice project 
+
+
+// Define 16_1_iv_FrontDesk project
+project(':Ch16:Recipe_16_1_iv_FrontDesk') {   
+  // Define defaultTasks, first clean then build for springintro
+  defaultTasks 'clean', 'build'
+  // Define dependencies
+  dependencies {
+    compile group: 'org.springframework', name: 'spring-core', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-expression', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-beans', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-context', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-jms', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-tx', version:'3.2.0.RELEASE'
+    compile group: 'javax.jms', name: 'jms-api', version:'1.1-rev-1'
+    compile group: 'org.apache.activemq', name: 'activemq-all', version:'5.7.0'
+    compile group: 'commons-logging', name: 'commons-logging', version:'1.1.1'
+   }
+   // Define how to build final JAR for project
+   jar {
+     //The following creates a fat-JAR with all dependencies embedded 
+     // from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+     //Instead use custom task to copy files to lib directory and create a custom manfiest
+     dependsOn copyDependenciesToLibDir
+     manifest.attributes("Main-Class": "com.apress.springrecipes.post.FrontDeskMain")
+     project.ext["CP"] = new StringBuffer()
+     configurations.runtime.allDependencies.each { dep ->
+       project.ext["CP"].append(' ')
+       project.ext["CP"].append("lib/${dep.getName()}-${dep.getVersion()}.jar")
+     }
+     project.ext["CP"].delete(0,1)
+     manifest.attributes("Class-Path": project.ext["CP"].toString())
+   }
+} // End 16_1_iv_FrontDesk project 
+
+
+// Define 16_1_iv_BackOffice project
+project(':Ch16:Recipe_16_1_iv_BackOffice') {   
+  // Define defaultTasks, first clean then build for springintro
+  defaultTasks 'clean', 'build'
+  // Define dependencies
+  dependencies {
+    compile group: 'org.springframework', name: 'spring-core', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-expression', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-beans', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-context', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-jms', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-tx', version:'3.2.0.RELEASE'
+    compile group: 'javax.jms', name: 'jms-api', version:'1.1-rev-1'
+    compile group: 'org.apache.activemq', name: 'activemq-all', version:'5.7.0'
+    compile group: 'commons-logging', name: 'commons-logging', version:'1.1.1'
+   }
+   // Define how to build final JAR for project
+   jar {
+     //The following creates a fat-JAR with all dependencies embedded 
+     // from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+     //Instead use custom task to copy files to lib directory and create a custom manfiest
+     dependsOn copyDependenciesToLibDir
+     manifest.attributes("Main-Class": "com.apress.springrecipes.post.BackOfficeMain")
+     project.ext["CP"] = new StringBuffer()
+     configurations.runtime.allDependencies.each { dep ->
+       project.ext["CP"].append(' ')
+       project.ext["CP"].append("lib/${dep.getName()}-${dep.getVersion()}.jar")
+     }
+     project.ext["CP"].delete(0,1)
+     manifest.attributes("Class-Path": project.ext["CP"].toString())
+   }
+} // End 16_1_iv_BackOffice project 
+
+// Define 16_2_i_FrontDesk project
+project(':Ch16:Recipe_16_2_i_FrontDesk') {   
+  // Define defaultTasks, first clean then build for springintro
+  defaultTasks 'clean', 'build'
+  // Define dependencies
+  dependencies {
+    compile group: 'org.springframework', name: 'spring-core', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-expression', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-beans', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-context', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-jms', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-tx', version:'3.2.0.RELEASE'
+    compile group: 'javax.jms', name: 'jms-api', version:'1.1-rev-1'
+    compile group: 'org.apache.activemq', name: 'activemq-all', version:'5.7.0'
+    compile group: 'commons-logging', name: 'commons-logging', version:'1.1.1'
+   }
+   // Define how to build final JAR for project
+   jar {
+     //The following creates a fat-JAR with all dependencies embedded 
+     // from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+     //Instead use custom task to copy files to lib directory and create a custom manfiest
+     dependsOn copyDependenciesToLibDir
+     manifest.attributes("Main-Class": "com.apress.springrecipes.post.FrontDeskMain")
+     project.ext["CP"] = new StringBuffer()
+     configurations.runtime.allDependencies.each { dep ->
+       project.ext["CP"].append(' ')
+       project.ext["CP"].append("lib/${dep.getName()}-${dep.getVersion()}.jar")
+     }
+     project.ext["CP"].delete(0,1)
+     manifest.attributes("Class-Path": project.ext["CP"].toString())
+   }
+} // End 16_2_i_FrontDesk project 
+
+
+// Define 16_2_i_BackOffice project
+project(':Ch16:Recipe_16_2_i_BackOffice') {   
+  // Define defaultTasks, first clean then build for springintro
+  defaultTasks 'clean', 'build'
+  // Define dependencies
+  dependencies {
+    compile group: 'org.springframework', name: 'spring-core', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-expression', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-beans', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-context', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-jms', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-tx', version:'3.2.0.RELEASE'
+    compile group: 'javax.jms', name: 'jms-api', version:'1.1-rev-1'
+    compile group: 'org.apache.activemq', name: 'activemq-all', version:'5.7.0'
+    compile group: 'commons-logging', name: 'commons-logging', version:'1.1.1'
+   }
+   // Define how to build final JAR for project
+   jar {
+     //The following creates a fat-JAR with all dependencies embedded 
+     // from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+     //Instead use custom task to copy files to lib directory and create a custom manfiest
+     dependsOn copyDependenciesToLibDir
+     manifest.attributes("Main-Class": "com.apress.springrecipes.post.BackOfficeMain")
+     project.ext["CP"] = new StringBuffer()
+     configurations.runtime.allDependencies.each { dep ->
+       project.ext["CP"].append(' ')
+       project.ext["CP"].append("lib/${dep.getName()}-${dep.getVersion()}.jar")
+     }
+     project.ext["CP"].delete(0,1)
+     manifest.attributes("Class-Path": project.ext["CP"].toString())
+   }
+} // End 16_2_i_BackOffice project 
+
+
+// Define 16_2_ii_FrontDesk project
+project(':Ch16:Recipe_16_2_ii_FrontDesk') {   
+  // Define defaultTasks, first clean then build for springintro
+  defaultTasks 'clean', 'build'
+  // Define dependencies
+  dependencies {
+    compile group: 'org.springframework', name: 'spring-core', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-expression', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-beans', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-context', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-jms', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-tx', version:'3.2.0.RELEASE'
+    compile group: 'javax.jms', name: 'jms-api', version:'1.1-rev-1'
+    compile group: 'org.apache.activemq', name: 'activemq-all', version:'5.7.0'
+    compile group: 'commons-logging', name: 'commons-logging', version:'1.1.1'
+   }
+   // Define how to build final JAR for project
+   jar {
+     //The following creates a fat-JAR with all dependencies embedded 
+     // from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+     //Instead use custom task to copy files to lib directory and create a custom manfiest
+     dependsOn copyDependenciesToLibDir
+     manifest.attributes("Main-Class": "com.apress.springrecipes.post.FrontDeskMain")
+     project.ext["CP"] = new StringBuffer()
+     configurations.runtime.allDependencies.each { dep ->
+       project.ext["CP"].append(' ')
+       project.ext["CP"].append("lib/${dep.getName()}-${dep.getVersion()}.jar")
+     }
+     project.ext["CP"].delete(0,1)
+     manifest.attributes("Class-Path": project.ext["CP"].toString())
+   }
+} // End 16_2_ii_FrontDesk project 
+
+
+// Define 16_2_ii_BackOffice project
+project(':Ch16:Recipe_16_2_ii_BackOffice') {   
+  // Define defaultTasks, first clean then build for springintro
+  defaultTasks 'clean', 'build'
+  // Define dependencies
+  dependencies {
+    compile group: 'org.springframework', name: 'spring-core', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-expression', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-beans', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-context', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-jms', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-tx', version:'3.2.0.RELEASE'
+    compile group: 'javax.jms', name: 'jms-api', version:'1.1-rev-1'
+    compile group: 'org.apache.activemq', name: 'activemq-all', version:'5.7.0'
+    compile group: 'commons-logging', name: 'commons-logging', version:'1.1.1'
+   }
+   // Define how to build final JAR for project
+   jar {
+     //The following creates a fat-JAR with all dependencies embedded 
+     // from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+     //Instead use custom task to copy files to lib directory and create a custom manfiest
+     dependsOn copyDependenciesToLibDir
+     manifest.attributes("Main-Class": "com.apress.springrecipes.post.BackOfficeMain")
+     project.ext["CP"] = new StringBuffer()
+     configurations.runtime.allDependencies.each { dep ->
+       project.ext["CP"].append(' ')
+       project.ext["CP"].append("lib/${dep.getName()}-${dep.getVersion()}.jar")
+     }
+     project.ext["CP"].delete(0,1)
+     manifest.attributes("Class-Path": project.ext["CP"].toString())
+   }
+} // End 16_2_ii_BackOffice project 
+
+// Define 16_3_FrontDesk project
+project(':Ch16:Recipe_16_3_FrontDesk') {   
+  // Define defaultTasks, first clean then build for springintro
+  defaultTasks 'clean', 'build'
+  // Define dependencies
+  dependencies {
+    compile group: 'org.springframework', name: 'spring-core', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-expression', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-beans', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-context', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-jms', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-tx', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-aop', version:'3.2.0.RELEASE'
+    compile group: 'javax.jms', name: 'jms-api', version:'1.1-rev-1'
+    compile group: 'org.apache.activemq', name: 'activemq-all', version:'5.7.0'
+    compile group: 'commons-logging', name: 'commons-logging', version:'1.1.1'
+    compile group: 'org.aspectj', name: 'aspectjtools',version:'1.7.2'
+    compile group: 'aopalliance', name: 'aopalliance', version:'1.0'           
+   }
+   // Define how to build final JAR for project
+   jar {
+     //The following creates a fat-JAR with all dependencies embedded 
+     // from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+     //Instead use custom task to copy files to lib directory and create a custom manfiest
+     dependsOn copyDependenciesToLibDir
+     manifest.attributes("Main-Class": "com.apress.springrecipes.post.FrontDeskMain")
+     project.ext["CP"] = new StringBuffer()
+     configurations.runtime.allDependencies.each { dep ->
+       project.ext["CP"].append(' ')
+       project.ext["CP"].append("lib/${dep.getName()}-${dep.getVersion()}.jar")
+     }
+     project.ext["CP"].delete(0,1)
+     manifest.attributes("Class-Path": project.ext["CP"].toString())
+   }
+} // End 16_3_FrontDesk project 
+
+
+// Define 16_3_BackOffice project
+project(':Ch16:Recipe_16_3_BackOffice') {   
+  // Define defaultTasks, first clean then build for springintro
+  defaultTasks 'clean', 'build'
+  // Define dependencies
+  dependencies {
+    compile group: 'org.springframework', name: 'spring-core', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-expression', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-beans', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-context', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-jms', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-tx', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-aop', version:'3.2.0.RELEASE'
+    compile group: 'javax.jms', name: 'jms-api', version:'1.1-rev-1'
+    compile group: 'org.apache.activemq', name: 'activemq-all', version:'5.7.0'
+    compile group: 'commons-logging', name: 'commons-logging', version:'1.1.1'
+    compile group: 'org.aspectj', name: 'aspectjtools',version:'1.7.2'
+    compile group: 'aopalliance', name: 'aopalliance', version:'1.0'           
+   }
+   // Define how to build final JAR for project
+   jar {
+     //The following creates a fat-JAR with all dependencies embedded 
+     // from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+     //Instead use custom task to copy files to lib directory and create a custom manfiest
+     dependsOn copyDependenciesToLibDir
+     manifest.attributes("Main-Class": "com.apress.springrecipes.post.BackOfficeMain")
+     project.ext["CP"] = new StringBuffer()
+     configurations.runtime.allDependencies.each { dep ->
+       project.ext["CP"].append(' ')
+       project.ext["CP"].append("lib/${dep.getName()}-${dep.getVersion()}.jar")
+     }
+     project.ext["CP"].delete(0,1)
+     manifest.attributes("Class-Path": project.ext["CP"].toString())
+   }
+} // End 16_3_BackOffice project 
+
+
+// Define 16_4_i_FrontDesk project
+project(':Ch16:Recipe_16_4_i_FrontDesk') {   
+  // Define defaultTasks, first clean then build for springintro
+  defaultTasks 'clean', 'build'
+  // Define dependencies
+  dependencies {
+    compile group: 'org.springframework', name: 'spring-core', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-expression', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-beans', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-context', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-jms', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-tx', version:'3.2.0.RELEASE'
+    compile group: 'javax.jms', name: 'jms-api', version:'1.1-rev-1'
+    compile group: 'org.apache.activemq', name: 'activemq-all', version:'5.7.0'
+    compile group: 'commons-logging', name: 'commons-logging', version:'1.1.1'
+   }
+   // Define how to build final JAR for project
+   jar {
+     //The following creates a fat-JAR with all dependencies embedded 
+     // from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+     //Instead use custom task to copy files to lib directory and create a custom manfiest
+     dependsOn copyDependenciesToLibDir
+     manifest.attributes("Main-Class": "com.apress.springrecipes.post.FrontDeskMain")
+     project.ext["CP"] = new StringBuffer()
+     configurations.runtime.allDependencies.each { dep ->
+       project.ext["CP"].append(' ')
+       project.ext["CP"].append("lib/${dep.getName()}-${dep.getVersion()}.jar")
+     }
+     project.ext["CP"].delete(0,1)
+     manifest.attributes("Class-Path": project.ext["CP"].toString())
+   }
+} // End 16_4_i_FrontDesk project 
+
+
+// Define 16_4_i_BackOffice project
+project(':Ch16:Recipe_16_4_i_BackOffice') {   
+  // Define defaultTasks, first clean then build for springintro
+  defaultTasks 'clean', 'build'
+  // Define dependencies
+  dependencies {
+    compile group: 'org.springframework', name: 'spring-core', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-expression', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-beans', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-context', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-jms', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-tx', version:'3.2.0.RELEASE'
+    compile group: 'javax.jms', name: 'jms-api', version:'1.1-rev-1'
+    compile group: 'org.apache.activemq', name: 'activemq-all', version:'5.7.0'
+    compile group: 'commons-logging', name: 'commons-logging', version:'1.1.1'
+   }
+   // Define how to build final JAR for project
+   jar {
+     //The following creates a fat-JAR with all dependencies embedded 
+     // from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+     //Instead use custom task to copy files to lib directory and create a custom manfiest
+     dependsOn copyDependenciesToLibDir
+     manifest.attributes("Main-Class": "com.apress.springrecipes.post.BackOfficeMain")
+     project.ext["CP"] = new StringBuffer()
+     configurations.runtime.allDependencies.each { dep ->
+       project.ext["CP"].append(' ')
+       project.ext["CP"].append("lib/${dep.getName()}-${dep.getVersion()}.jar")
+     }
+     project.ext["CP"].delete(0,1)
+     manifest.attributes("Class-Path": project.ext["CP"].toString())
+   }
+} // End 16_4_i_BackOffice project 
+
+// Define 16_4_ii_FrontDesk project
+project(':Ch16:Recipe_16_4_ii_FrontDesk') {   
+  // Define defaultTasks, first clean then build for springintro
+  defaultTasks 'clean', 'build'
+  // Define dependencies
+  dependencies {
+    compile group: 'org.springframework', name: 'spring-core', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-expression', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-beans', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-context', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-jms', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-tx', version:'3.2.0.RELEASE'
+    compile group: 'javax.jms', name: 'jms-api', version:'1.1-rev-1'
+    compile group: 'org.apache.activemq', name: 'activemq-all', version:'5.7.0'
+    compile group: 'commons-logging', name: 'commons-logging', version:'1.1.1'
+   }
+   // Define how to build final JAR for project
+   jar {
+     //The following creates a fat-JAR with all dependencies embedded 
+     // from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+     //Instead use custom task to copy files to lib directory and create a custom manfiest
+     dependsOn copyDependenciesToLibDir
+     manifest.attributes("Main-Class": "com.apress.springrecipes.post.FrontDeskMain")
+     project.ext["CP"] = new StringBuffer()
+     configurations.runtime.allDependencies.each { dep ->
+       project.ext["CP"].append(' ')
+       project.ext["CP"].append("lib/${dep.getName()}-${dep.getVersion()}.jar")
+     }
+     project.ext["CP"].delete(0,1)
+     manifest.attributes("Class-Path": project.ext["CP"].toString())
+   }
+} // End 16_4_ii_FrontDesk project 
+
+
+// Define 16_4_ii_BackOffice project
+project(':Ch16:Recipe_16_4_ii_BackOffice') {   
+  // Define defaultTasks, first clean then build for springintro
+  defaultTasks 'clean', 'build'
+  // Define dependencies
+  dependencies {
+    compile group: 'org.springframework', name: 'spring-core', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-expression', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-beans', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-context', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-jms', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-tx', version:'3.2.0.RELEASE'
+    compile group: 'javax.jms', name: 'jms-api', version:'1.1-rev-1'
+    compile group: 'org.apache.activemq', name: 'activemq-all', version:'5.7.0'
+    compile group: 'commons-logging', name: 'commons-logging', version:'1.1.1'
+   }
+   // Define how to build final JAR for project
+   jar {
+     //The following creates a fat-JAR with all dependencies embedded 
+     // from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+     //Instead use custom task to copy files to lib directory and create a custom manfiest
+     dependsOn copyDependenciesToLibDir
+     manifest.attributes("Main-Class": "com.apress.springrecipes.post.BackOfficeMain")
+     project.ext["CP"] = new StringBuffer()
+     configurations.runtime.allDependencies.each { dep ->
+       project.ext["CP"].append(' ')
+       project.ext["CP"].append("lib/${dep.getName()}-${dep.getVersion()}.jar")
+     }
+     project.ext["CP"].delete(0,1)
+     manifest.attributes("Class-Path": project.ext["CP"].toString())
+   }
+} // End 16_4_ii_BackOffice project 
+
+// Define 16_4_iii_FrontDesk project
+project(':Ch16:Recipe_16_4_iii_FrontDesk') {   
+  // Define defaultTasks, first clean then build for springintro
+  defaultTasks 'clean', 'build'
+  // Define dependencies
+  dependencies {
+    compile group: 'org.springframework', name: 'spring-core', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-expression', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-beans', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-context', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-jms', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-tx', version:'3.2.0.RELEASE'
+    compile group: 'javax.jms', name: 'jms-api', version:'1.1-rev-1'
+    compile group: 'org.apache.activemq', name: 'activemq-all', version:'5.7.0'
+    compile group: 'commons-logging', name: 'commons-logging', version:'1.1.1'
+   }
+   // Define how to build final JAR for project
+   jar {
+     //The following creates a fat-JAR with all dependencies embedded 
+     // from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+     //Instead use custom task to copy files to lib directory and create a custom manfiest
+     dependsOn copyDependenciesToLibDir
+     manifest.attributes("Main-Class": "com.apress.springrecipes.post.FrontDeskMain")
+     project.ext["CP"] = new StringBuffer()
+     configurations.runtime.allDependencies.each { dep ->
+       project.ext["CP"].append(' ')
+       project.ext["CP"].append("lib/${dep.getName()}-${dep.getVersion()}.jar")
+     }
+     project.ext["CP"].delete(0,1)
+     manifest.attributes("Class-Path": project.ext["CP"].toString())
+   }
+} // End 16_4_iii_FrontDesk project 
+
+
+// Define 16_4_iii_BackOffice project
+project(':Ch16:Recipe_16_4_iii_BackOffice') {   
+  // Define defaultTasks, first clean then build for springintro
+  defaultTasks 'clean', 'build'
+  // Define dependencies
+  dependencies {
+    compile group: 'org.springframework', name: 'spring-core', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-expression', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-beans', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-context', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-jms', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-tx', version:'3.2.0.RELEASE'
+    compile group: 'javax.jms', name: 'jms-api', version:'1.1-rev-1'
+    compile group: 'org.apache.activemq', name: 'activemq-all', version:'5.7.0'
+    compile group: 'commons-logging', name: 'commons-logging', version:'1.1.1'
+   }
+   // Define how to build final JAR for project
+   jar {
+     //The following creates a fat-JAR with all dependencies embedded 
+     // from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+     //Instead use custom task to copy files to lib directory and create a custom manfiest
+     dependsOn copyDependenciesToLibDir
+     manifest.attributes("Main-Class": "com.apress.springrecipes.post.BackOfficeMain")
+     project.ext["CP"] = new StringBuffer()
+     configurations.runtime.allDependencies.each { dep ->
+       project.ext["CP"].append(' ')
+       project.ext["CP"].append("lib/${dep.getName()}-${dep.getVersion()}.jar")
+     }
+     project.ext["CP"].delete(0,1)
+     manifest.attributes("Class-Path": project.ext["CP"].toString())
+   }
+} // End 16_4_iii_BackOffice project 
+
+// Define 16_4_iv_FrontDesk project
+project(':Ch16:Recipe_16_4_iv_FrontDesk') {   
+  // Define defaultTasks, first clean then build for springintro
+  defaultTasks 'clean', 'build'
+  // Define dependencies
+  dependencies {
+    compile group: 'org.springframework', name: 'spring-core', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-expression', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-beans', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-context', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-jms', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-tx', version:'3.2.0.RELEASE'
+    compile group: 'javax.jms', name: 'jms-api', version:'1.1-rev-1'
+    compile group: 'org.apache.activemq', name: 'activemq-all', version:'5.7.0'
+    compile group: 'commons-logging', name: 'commons-logging', version:'1.1.1'
+   }
+   // Define how to build final JAR for project
+   jar {
+     //The following creates a fat-JAR with all dependencies embedded 
+     // from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+     //Instead use custom task to copy files to lib directory and create a custom manfiest
+     dependsOn copyDependenciesToLibDir
+     manifest.attributes("Main-Class": "com.apress.springrecipes.post.FrontDeskMain")
+     project.ext["CP"] = new StringBuffer()
+     configurations.runtime.allDependencies.each { dep ->
+       project.ext["CP"].append(' ')
+       project.ext["CP"].append("lib/${dep.getName()}-${dep.getVersion()}.jar")
+     }
+     project.ext["CP"].delete(0,1)
+     manifest.attributes("Class-Path": project.ext["CP"].toString())
+   }
+} // End 16_4_iv_FrontDesk project 
+
+
+// Define 16_4_iv_BackOffice project
+project(':Ch16:Recipe_16_4_iv_BackOffice') {   
+  // Define defaultTasks, first clean then build for springintro
+  defaultTasks 'clean', 'build'
+  // Define dependencies
+  dependencies {
+    compile group: 'org.springframework', name: 'spring-core', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-expression', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-beans', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-context', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-jms', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-tx', version:'3.2.0.RELEASE'
+    compile group: 'javax.jms', name: 'jms-api', version:'1.1-rev-1'
+    compile group: 'org.apache.activemq', name: 'activemq-all', version:'5.7.0'
+    compile group: 'commons-logging', name: 'commons-logging', version:'1.1.1'
+   }
+   // Define how to build final JAR for project
+   jar {
+     //The following creates a fat-JAR with all dependencies embedded 
+     // from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+     //Instead use custom task to copy files to lib directory and create a custom manfiest
+     dependsOn copyDependenciesToLibDir
+     manifest.attributes("Main-Class": "com.apress.springrecipes.post.BackOfficeMain")
+     project.ext["CP"] = new StringBuffer()
+     configurations.runtime.allDependencies.each { dep ->
+       project.ext["CP"].append(' ')
+       project.ext["CP"].append("lib/${dep.getName()}-${dep.getVersion()}.jar")
+     }
+     project.ext["CP"].delete(0,1)
+     manifest.attributes("Class-Path": project.ext["CP"].toString())
+   }
+} // End 16_4_iv_BackOffice project 
+
+// Define 16_4_v_FrontDesk project
+project(':Ch16:Recipe_16_4_v_FrontDesk') {   
+  // Define defaultTasks, first clean then build for springintro
+  defaultTasks 'clean', 'build'
+  // Define dependencies
+  dependencies {
+    compile group: 'org.springframework', name: 'spring-core', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-expression', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-beans', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-context', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-jms', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-tx', version:'3.2.0.RELEASE'
+    compile group: 'javax.jms', name: 'jms-api', version:'1.1-rev-1'
+    compile group: 'org.apache.activemq', name: 'activemq-all', version:'5.7.0'
+    compile group: 'commons-logging', name: 'commons-logging', version:'1.1.1'
+   }
+   // Define how to build final JAR for project
+   jar {
+     //The following creates a fat-JAR with all dependencies embedded 
+     // from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+     //Instead use custom task to copy files to lib directory and create a custom manfiest
+     dependsOn copyDependenciesToLibDir
+     manifest.attributes("Main-Class": "com.apress.springrecipes.post.FrontDeskMain")
+     project.ext["CP"] = new StringBuffer()
+     configurations.runtime.allDependencies.each { dep ->
+       project.ext["CP"].append(' ')
+       project.ext["CP"].append("lib/${dep.getName()}-${dep.getVersion()}.jar")
+     }
+     project.ext["CP"].delete(0,1)
+     manifest.attributes("Class-Path": project.ext["CP"].toString())
+   }
+} // End 16_4_v_FrontDesk project 
+
+
+// Define 16_4_v_BackOffice project
+project(':Ch16:Recipe_16_4_v_BackOffice') {   
+  // Define defaultTasks, first clean then build for springintro
+  defaultTasks 'clean', 'build'
+  // Define dependencies
+  dependencies {
+    compile group: 'org.springframework', name: 'spring-core', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-expression', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-beans', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-context', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-jms', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-tx', version:'3.2.0.RELEASE'
+    compile group: 'javax.jms', name: 'jms-api', version:'1.1-rev-1'
+    compile group: 'org.apache.activemq', name: 'activemq-all', version:'5.7.0'
+    compile group: 'commons-logging', name: 'commons-logging', version:'1.1.1'
+   }
+   // Define how to build final JAR for project
+   jar {
+     //The following creates a fat-JAR with all dependencies embedded 
+     // from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+     //Instead use custom task to copy files to lib directory and create a custom manfiest
+     dependsOn copyDependenciesToLibDir
+     manifest.attributes("Main-Class": "com.apress.springrecipes.post.BackOfficeMain")
+     project.ext["CP"] = new StringBuffer()
+     configurations.runtime.allDependencies.each { dep ->
+       project.ext["CP"].append(' ')
+       project.ext["CP"].append("lib/${dep.getName()}-${dep.getVersion()}.jar")
+     }
+     project.ext["CP"].delete(0,1)
+     manifest.attributes("Class-Path": project.ext["CP"].toString())
+   }
+} // End 16_4_v_BackOffice project 
+
+
+// Define 16_5_FrontDesk project
+project(':Ch16:Recipe_16_5_FrontDesk') {   
+  // Define defaultTasks, first clean then build for springintro
+  defaultTasks 'clean', 'build'
+  // Define dependencies
+  dependencies {
+    compile group: 'org.springframework', name: 'spring-core', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-expression', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-beans', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-context', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-jms', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-tx', version:'3.2.0.RELEASE'
+    compile group: 'javax.jms', name: 'jms-api', version:'1.1-rev-1'
+    compile group: 'org.apache.activemq', name: 'activemq-all', version:'5.7.0'
+    compile group: 'commons-logging', name: 'commons-logging', version:'1.1.1'
+   }
+   // Define how to build final JAR for project
+   jar {
+     //The following creates a fat-JAR with all dependencies embedded 
+     // from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+     //Instead use custom task to copy files to lib directory and create a custom manfiest
+     dependsOn copyDependenciesToLibDir
+     manifest.attributes("Main-Class": "com.apress.springrecipes.post.FrontDeskMain")
+     project.ext["CP"] = new StringBuffer()
+     configurations.runtime.allDependencies.each { dep ->
+       project.ext["CP"].append(' ')
+       project.ext["CP"].append("lib/${dep.getName()}-${dep.getVersion()}.jar")
+     }
+     project.ext["CP"].delete(0,1)
+     manifest.attributes("Class-Path": project.ext["CP"].toString())
+   }
+} // End 16_5_FrontDesk project 
+
+
+// Define 16_5_BackOffice project
+project(':Ch16:Recipe_16_5_BackOffice') {   
+  // Define defaultTasks, first clean then build for springintro
+  defaultTasks 'clean', 'build'
+  // Define dependencies
+  dependencies {
+    compile group: 'org.springframework', name: 'spring-core', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-expression', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-beans', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-context', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-jms', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-tx', version:'3.2.0.RELEASE'
+    compile group: 'javax.jms', name: 'jms-api', version:'1.1-rev-1'
+    compile group: 'org.apache.activemq', name: 'activemq-all', version:'5.7.0'
+    compile group: 'org.apache.activemq', name: 'activemq-pool', version:'5.7.0'
+    compile group: 'commons-logging', name: 'commons-logging', version:'1.1.1'
+    compile group: 'commons-pool', name: 'commons-pool', version:'1.6'
+
+   }
+   // Define how to build final JAR for project
+   jar {
+     //The following creates a fat-JAR with all dependencies embedded 
+     // from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+     //Instead use custom task to copy files to lib directory and create a custom manfiest
+     dependsOn copyDependenciesToLibDir
+     manifest.attributes("Main-Class": "com.apress.springrecipes.post.BackOfficeMain")
+     project.ext["CP"] = new StringBuffer()
+     configurations.runtime.allDependencies.each { dep ->
+       project.ext["CP"].append(' ')
+       project.ext["CP"].append("lib/${dep.getName()}-${dep.getVersion()}.jar")
+     }
+     project.ext["CP"].delete(0,1)
+     manifest.attributes("Class-Path": project.ext["CP"].toString())
+   }
+} // End 16_5_BackOffice project 
