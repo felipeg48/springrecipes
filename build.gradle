@@ -7,6 +7,7 @@ subprojects {
   // Define optional flags for compilation
   tasks.withType(Compile) { 
 	  options.compilerArgs << "-Xlint:deprecation" 
+	  options.compilerArgs << "-Xlint:unchecked" 
   } 
 
   // Define group and version
