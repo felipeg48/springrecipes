@@ -786,6 +786,67 @@ project(':Ch15:Recipe_15_7_Server') {
    }
 } // End 15_7_Server project 
 
+// Define 15_8_Burlap_Server
+project(':Ch15:Recipe_15_8_Burlap_Server') {
+   // Define usage of war plugin
+   apply plugin: 'war'
+   // Define defaulttasks, first clean, then build, then war
+   defaultTasks 'clean','build','war'
+   // Define dependencies
+   war {
+       archiveName='burlap.war'
+      }	
+   dependencies {
+    compile group: 'org.springframework', name: 'spring-core', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-expression', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-webmvc', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-beans', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-context', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-web', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-aop', version:'3.2.0.RELEASE'
+    compile group: 'commons-logging', name: 'commons-logging', version:'1.1.1'
+    compile group: 'com.caucho', name: 'hessian', version:'4.0.7'
+    // Add dependencies to add for runtime (these will be included in the WAR, in addition to those in compile group)
+    //runtime group: 'javax.servlet', name: 'jstl', version: '1.2'
+   }
+} // End 15_8_Burlap_Server
+
+
+// Define 15_8_Burlap_Client project
+project(':Ch15:Recipe_15_8_Burlap_Client') {   
+  // Define defaultTasks, first clean then build for springintro
+  defaultTasks 'clean', 'build'
+  // Define dependencies
+  dependencies {
+    compile group: 'org.springframework', name: 'spring-core', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-expression', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-beans', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-context', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-web', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-aop', version:'3.2.0.RELEASE'
+    compile group: 'commons-logging', name: 'commons-logging', version:'1.1.1'
+    compile group: 'org.aspectj', name: 'aspectjtools',version:'1.7.2'
+    compile group: 'aopalliance', name: 'aopalliance', version:'1.0'           
+    compile group: 'com.caucho', name: 'hessian', version:'4.0.7'
+   }
+   // Define how to build final JAR for project
+   jar {
+     //The following creates a fat-JAR with all dependencies embedded 
+     // from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+     //Instead use custom task to copy files to lib directory and create a custom manfiest
+     dependsOn copyDependenciesToLibDir
+     manifest.attributes("Main-Class": "com.apress.springrecipes.weather.BurlapClient")
+     project.ext["CP"] = new StringBuffer()
+     configurations.runtime.allDependencies.each { dep ->
+       project.ext["CP"].append(' ')
+       project.ext["CP"].append("lib/${dep.getName()}-${dep.getVersion()}.jar")
+     }
+     project.ext["CP"].delete(0,1)
+     manifest.attributes("Class-Path": project.ext["CP"].toString())
+   }
+} // End 15_8_Burlap_Client project 
+
+
 // Define 15_8_Hessian_Server
 project(':Ch15:Recipe_15_8_Hessian_Server') {
    // Define usage of war plugin
@@ -845,3 +906,62 @@ project(':Ch15:Recipe_15_8_Hessian_Client') {
      manifest.attributes("Class-Path": project.ext["CP"].toString())
    }
 } // End 15_8_Hessian_Client project 
+
+
+// Define 15_8_HTTPInvoker_Server
+project(':Ch15:Recipe_15_8_HTTPInvoker_Server') {
+   // Define usage of war plugin
+   apply plugin: 'war'
+   // Define defaulttasks, first clean, then build, then war
+   defaultTasks 'clean','build','war'
+   // Define dependencies
+   war {
+       archiveName='httpinvoker.war'
+      }	
+   dependencies {
+    compile group: 'org.springframework', name: 'spring-core', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-expression', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-webmvc', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-beans', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-context', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-web', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-aop', version:'3.2.0.RELEASE'
+    compile group: 'commons-logging', name: 'commons-logging', version:'1.1.1'
+    // Add dependencies to add for runtime (these will be included in the WAR, in addition to those in compile group)
+    //runtime group: 'javax.servlet', name: 'jstl', version: '1.2'
+   }
+} // End 15_8_HTTPInvoker_Server
+
+
+// Define 15_8_HTTPInvoker_Client project
+project(':Ch15:Recipe_15_8_HTTPInvoker_Client') {   
+  // Define defaultTasks, first clean then build for springintro
+  defaultTasks 'clean', 'build'
+  // Define dependencies
+  dependencies {
+    compile group: 'org.springframework', name: 'spring-core', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-expression', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-beans', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-context', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-web', version:'3.2.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-aop', version:'3.2.0.RELEASE'
+    compile group: 'commons-logging', name: 'commons-logging', version:'1.1.1'
+    compile group: 'org.aspectj', name: 'aspectjtools',version:'1.7.2'
+    compile group: 'aopalliance', name: 'aopalliance', version:'1.0'           
+   }
+   // Define how to build final JAR for project
+   jar {
+     //The following creates a fat-JAR with all dependencies embedded 
+     // from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+     //Instead use custom task to copy files to lib directory and create a custom manfiest
+     dependsOn copyDependenciesToLibDir
+     manifest.attributes("Main-Class": "com.apress.springrecipes.weather.HTTPInvokerClient")
+     project.ext["CP"] = new StringBuffer()
+     configurations.runtime.allDependencies.each { dep ->
+       project.ext["CP"].append(' ')
+       project.ext["CP"].append("lib/${dep.getName()}-${dep.getVersion()}.jar")
+     }
+     project.ext["CP"].delete(0,1)
+     manifest.attributes("Class-Path": project.ext["CP"].toString())
+   }
+} // End 15_8_HTTPInvoker_Client project 

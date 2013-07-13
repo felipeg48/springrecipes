@@ -3,7 +3,7 @@ package com.apress.springrecipes.weather;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
-public class HessianClient {
+public class HTTPInvokerClient {
 
     public static void main(String[] args) {
         ApplicationContext context =
