@@ -12,8 +12,7 @@ public class TemperatureInfo implements Serializable {
     private double max;
     private double average;
 
-    public TemperatureInfo() { } 
-
+    public TemperatureInfo()  { }
 
     public TemperatureInfo(String city, Date date, double min, double max, double average) { 
 	this.city = city; 

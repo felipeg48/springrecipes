@@ -6,6 +6,8 @@ import org.springframework.web.context.ContextLoaderListener;
 
 import org.springframework.web.context.support.XmlWebApplicationContext;
 
+import org.apache.cxf.transport.servlet.CXFServlet;
+
 import javax.servlet.ServletRegistration;
 
 import javax.servlet.ServletContext;
@@ -17,12 +19,15 @@ public class Initializer implements WebApplicationInitializer {
 	throws ServletException {
         XmlWebApplicationContext context = new XmlWebApplicationContext();
 	context.setConfigLocation("/WEB-INF/appContext.xml");
-	
-	container.addListener(new ContextLoaderListener(context));
 
+	container.addListener(new ContextLoaderListener(context));
+	
 	ServletRegistration.Dynamic dispatcher = container.addServlet("dispatcher", new DispatcherServlet(context));
 	dispatcher.setLoadOnStartup(1);
-	dispatcher.addMapping("/*");
+	dispatcher.addMapping("/dispatcher/*");
 	
+	ServletRegistration.Dynamic cxf = container.addServlet("cxf", new CXFServlet());
+	cxf.setLoadOnStartup(1);
+	cxf.addMapping("/*");
     }
 }
