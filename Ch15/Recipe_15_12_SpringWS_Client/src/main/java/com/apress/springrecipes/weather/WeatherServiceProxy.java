@@ -7,11 +7,6 @@ import java.util.List;
 import java.util.ArrayList;
 import java.text.ParseException;
 
-import org.dom4j.Document;
-import org.dom4j.DocumentHelper;
-import org.dom4j.Element;
-import org.dom4j.io.DocumentResult;
-import org.dom4j.io.DocumentSource;
 import org.springframework.ws.client.core.WebServiceTemplate;
 
 
